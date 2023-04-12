@@ -1,13 +1,13 @@
 :root{
-    --mainbg: rgb(191, 186, 186);
+    --mainbg: rgba(173, 220, 220, 0.655);
 }
 
 body{
-    background-color: var(--mainbg);
+    background-color: var(--mainbg) !important;
 }
 
 .main{
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .navbar-brand{
