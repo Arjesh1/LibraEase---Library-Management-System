@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import SignIn from './pages/signup-signin/SignIn';
 import SignUp from './pages/signup-signin/SignUp';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       </Routes>
 
       </BrowserRouter>
+      <ToastContainer 
+theme="colored" />
     </div>
   );
 }

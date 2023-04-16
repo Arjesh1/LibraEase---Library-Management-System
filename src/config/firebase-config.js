@@ -7,15 +7,15 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCCtj1v3Gxzcvp2YQ2FLgl-PbKpi75B22c",
-  authDomain: "cooding-bootcamp.firebaseapp.com",
-  projectId: "cooding-bootcamp",
-  storageBucket: "cooding-bootcamp.appspot.com",
-  messagingSenderId: "935515538931",
-  appId: "1:935515538931:web:c4efd36f513c2de3863e86"
+  apiKey: process.env.REACT_APP_APIKEY ,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN ,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDERID,
+  appId: process.env.REACT_APP_APPID 
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
-const db = getFirestore(app)
+export const auth = getAuth(app)
+export const db = getFirestore(app)
