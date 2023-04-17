@@ -3,8 +3,9 @@ import {MainLayout} from '../../components/layout/MainLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
 import { toast } from 'react-toastify'
-import {auth} from "../../config/firebase-config"
+import {auth, db} from "../../config/firebase-config"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 
 
 const SignUp = () => {
@@ -26,20 +27,23 @@ const SignUp = () => {
     e.preventDefault()
     console.log(form);
 
-    const {confirmpassword, password, email} = form
+    const {confirmpassword, password, ...rest} = form
 
     if(password !== confirmpassword)
     return toast.error("Password do not match")
 
 
 // register
-const pendingUser = createUserWithEmailAndPassword(auth, email, password)
+const pendingUser = createUserWithEmailAndPassword(auth, rest.email, password)
 toast.promise(pendingUser,{
   pending:"Please wait..."
 })
 
 const {user} = await pendingUser 
 if (user?.uid){
+
+
+  await setDoc(doc(db, 'user', user.uid), rest)
 return toast.success("Account has been created")
 }
 return toast.error("Please try again later")
