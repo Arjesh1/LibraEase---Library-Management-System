@@ -9,142 +9,124 @@ import { doc, setDoc } from 'firebase/firestore'
 
 
 const SignUp = () => {
+  const [form, setForm] = useState({});
 
-  
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
 
-  const [form, setForm] = useState({})
+    setForm({ ...form, [name]: value });
+  };
 
-  const handleOnChange = (e) =>{
-    const {name, value} = e.target
-
-    setForm({...form, [name]:value})
-  }
-
-  const handleOnSubmit = async (e) =>{
+  const handleOnSubmit = async (e) => {
     try {
-    
-    
-    e.preventDefault()
-    console.log(form);
+      e.preventDefault();
 
-    const {confirmpassword, password, ...rest} = form
+      const { confirmPassword, password, ...rest } = form;
+      if (confirmPassword !== password)
+        return toast.error("Password do not match");
 
-    if(password !== confirmpassword)
-    return toast.error("Password do not match")
+      //regist
+      const pendingUser = createUserWithEmailAndPassword(
+        auth,
+        rest.email,
+        password
+      );
+      toast.promise(pendingUser, {
+        pending: "Please wait...",
+      });
 
-
-// register
-const pendingUser = createUserWithEmailAndPassword(auth, rest.email, password)
-toast.promise(pendingUser,{
-  pending:"Please wait..."
-})
-
-const {user} = await pendingUser 
-if (user?.uid){
-
-
-  await setDoc(doc(db, 'user', user.uid), rest)
-return toast.success("Account has been created")
-}
-return toast.error("Please try again later")
-
-} catch (error) {
-  toast.error(error.message)
-      
-}
-  }
+      const { user } = await pendingUser;
+      if (user?.uid) {
+        await setDoc(doc(db, "users", user.uid), rest);
+        return toast.success(
+          "Your account has been creted successfull, Please login in now!"
+        );
+      }
+      toast.error("Error, lease try again later");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const inputs = [
-
     {
-        label: "First Name",
-        name: "fname",
-        type: "text",
-        placeholder: 'Sam',
-        required: true,
-
+      label: "First Name",
+      name: "fName",
+      type: "text",
+      placeholder: "Sam smith",
+      required: true,
     },
-
     {
-        label: "Last Name",
-        name: "lname",
-        type: 'text',
-        placeholder: 'Smith',
-        required: true,
-
+      label: "Last Name",
+      name: "lName",
+      type: "text",
+      placeholder: "Sam smith",
+      required: true,
     },
-
     {
-        label: "Email",
-        name: "email",
-        type: 'email',
-        placeholder: 'Sam@gmail.com',
-        required: true,
-
+      label: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "Samsmith@email.com",
+      required: true,
     },
-
     {
-        label: "Password",
-        name: "password",
-        type: 'password',
-        placeholder: '********',
-        required: true,
-
+      label: "Password",
+      name: "password",
+      type: "password",
+      placeholder: "xxxxxxxxxx",
+      required: true,
     },
-
     {
-        label: "Confirm Password",
-        name: "confirmpassword",
-        type: 'password',
-        placeholder: '********',
-        required: true,
-
+      label: "Confirm Password",
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "xxxxxxxxxx",
+      required: true,
     },
-  ]
-    return (
-    <div>
-        <MainLayout>
-      <Container className='mt-5 mb-5'>
-        <Form onSubmit={handleOnSubmit}
-        className='border p-5 shadow-lg rounded m-auto bg-light' style={{width: "450px"}}>
-            <h3 className='text-primary fw-bolder mb-4'>Join Our Community</h3>
+  ];
 
-         <Form.Text > Anyone can create account for admin and user account.</Form.Text>
+  return (
+    <MainLayout>
+      <Container className="mt-5">
+        <Form
+          onSubmit={handleOnSubmit}
+          className="border p-5 shadow-lg rounded m-auto bg-light  mb-3"
+          style={{ width: "400px" }}
+        >
+          <h3 className="text-primary fw-bolder mb-3">Join Library Comunity</h3>
 
-         <br/>
-         <br/>
+          <Form.Text>
+            Anyone can create admin or user account for experiment purpose.
+            <br />
+            <br />
+            Once you are regustered, you will be redirected to Dashboard
+            automatically.
+          </Form.Text>
+          <div className="mt-5">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Account Type</Form.Label>
+              <Form.Select name="role" onChange={handleOnChange}>
+                <option value="">-- Select user --</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+              </Form.Select>
+            </Form.Group>
 
-         <Form.Text > You will be redirected to dashjboardd after successful registraton</Form.Text>
+            {inputs.map((item, i) => (
+              <CustomInput key={i} {...item} onChange={handleOnChange} />
+            ))}
 
-          <div className='mt-5'>
-
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Account Type</Form.Label>
-        <Form.Select name='role' onChange={handleOnChange}>
-            <option value="">Select user</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </Form.Select>
-        
-      </Form.Group>
-
-            {
-                inputs.map((item, i) => (
-                    <CustomInput key={i} {...item} onChange={handleOnChange} />
-                ))
-            }
-
-            <div className='d-grid'>
-                <Button variant='primary' type='submit'>Register Now!</Button>
+            <div className="d-grid">
+              <Button variant="primary" type="submit">
+                Regist Now!
+              </Button>
             </div>
-
           </div>
-
         </Form>
       </Container>
-      </MainLayout>
-    </div>
-  )
-}
+    </MainLayout>
+  );
+};
 
-export default SignUp
+export default SignUp;

@@ -11,11 +11,10 @@ export const getUserAction = (uid) => async (dispatch) => {
     const docSnap = await getDoc(doc(db, "users", uid));
 
     console.log(docSnap);
-    //dispatch user to the redux
+    //dispatch user to the reduxt
 
     if (docSnap.exists()) {
       const user = { ...docSnap.data(), uid };
-      console.log(user);
       dispatch(setUser(user));
     }
   } catch (error) {
