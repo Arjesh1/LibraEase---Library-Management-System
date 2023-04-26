@@ -8,9 +8,9 @@ export const getUserAction = (uid) => async (dispatch) => {
   try {
     // get user by id from firebase
 
-    const docSnap = await getDoc(doc(db, "users", uid));
+    const docSnap = await getDoc(doc(db, "user", uid));
 
-    console.log(docSnap);
+    console.log(docSnap, docSnap.exists(), docSnap.data(), uid);
     //dispatch user to the reduxt
 
     if (docSnap.exists()) {
