@@ -18,7 +18,7 @@ const SignIn = () => {
 
   useEffect(() => {
     user?.uid && navigate("/dashboard");
-  }, [user.uid]);
+  }, []);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
