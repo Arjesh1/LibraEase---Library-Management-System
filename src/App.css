@@ -26,3 +26,26 @@ body{
     color: rgb(233, 133, 3);
 }
 
+.user-Layout{
+    display: flex;
+
+}
+
+.left{
+    
+    min-width: 200px;
+    position: fixed;
+    height: 100%;
+    color: white;
+}
+
+.right{
+    background: red;
+    width: calc(100% - 200px);
+    margin-left: auto;
+}
+
+.sidebar li{
+    list-style: none;
+    line-height: 3rem;
+}

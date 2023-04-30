@@ -3,7 +3,7 @@ import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
 import { Container } from 'react-bootstrap'
 
-const Dashboard = () => {
+const Books = () => {
   return (
 
   <PrivateRoute>
@@ -22,4 +22,5 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Books
+

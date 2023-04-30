@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Navigate} from 'react-router-dom';
 
-export const PrivateRoute = (children) => {
+export const PrivateRoute = ({children}) => {
     // const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
 
