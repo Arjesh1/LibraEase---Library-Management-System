@@ -12,16 +12,18 @@ export const UserLayout = ({children}) => {
       <hr/>
       <div className='sidebar fw-bolder list-style-none'>
         <ul>
+          {/* for all type of user */}
+          <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
+          <li><Link className='nav-link' to="/history">History</Link></li>
+          <li><Link className='nav-link' to="/profile">Profile</Link></li>
+
           {/* for admin only */}
           <li><Link className='nav-link'  to="/books">Books</Link></li>
           <li><Link className='nav-link' to="/clients">Clients</Link></li>
           {/* <li><Link className='nav-link' to="">User</Link></li>
           <li><Link className='nav-link' to="">Profile</Link></li> */}
 
-          {/* for all type of user */}
-          <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
-          <li><Link className='nav-link' to="/history">History</Link></li>
-          <li><Link className='nav-link' to="/profile">Profile</Link></li>
+          
         </ul>
       </div>
 
@@ -40,7 +42,7 @@ export const UserLayout = ({children}) => {
 
 
         {/* main contetnt area */}
-       <div className='main'>{children}</div>
+       <div className='main pt-3'>{children}</div>
 
         {/* footer section */}
 

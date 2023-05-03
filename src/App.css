@@ -40,7 +40,7 @@ body{
 }
 
 .right{
-    background: red;
+    background: rgb(103, 174, 222);
     width: calc(100% - 200px);
     margin-left: auto;
 }

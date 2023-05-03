@@ -1,7 +1,9 @@
 import React from 'react'
 import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { BookTable } from '../../components/book-table/BookTable'
 
 const Books = () => {
   return (
@@ -9,9 +11,19 @@ const Books = () => {
   <PrivateRoute>
       <UserLayout>
         <Container>
-          <h3>Dashboard</h3>
+          <h3>Books</h3>
 
           <hr/>
+
+          <div className='text-end'>
+            <Link to="/new-book">
+              <Button variant='primary'>Add New Book</Button>
+            </Link>
+            <div className='mt-3'>
+            <BookTable/>
+            </div>
+            
+          </div>
 
 
 
