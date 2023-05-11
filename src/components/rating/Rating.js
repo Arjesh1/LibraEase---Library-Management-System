@@ -19,7 +19,7 @@ const Rating = ({rate }) => {
       ))}
       {hasDecimalValue > 0 && <BsStarHalf />}
       {noRateStar.map(() => (
-        <BsStar />
+        <BsStar/>
       ))}
     </div>
   )
