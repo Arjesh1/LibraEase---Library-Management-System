@@ -9,12 +9,14 @@ const bookSlice = createSlice({
     name: "book",
     initialState,
     reducers: {
-        setBook:(state, action)=>{
-            state.book = action.payload
-        }
+        setBook: (state, { payload }) => {
+            if (!state.book.length && !payload.length) return;
+      
+            state.book = payload;
+          },
     }
 })
 
-export const {setbook} = bookSlice.actions
+export const {setBook} = bookSlice.actions
 
 export default bookSlice.reducer

@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 
 export const UserLayout = ({children}) => {
   const {user} = useSelector((state) => state.user)
-  console.log(user);
+ 
   return (
     <div className='user-Layout'>
 
       <div className='left bg-dark p-2 pt-5'>
-      <div className='title mt-3 fs-2 text-center'>{user.fname + " " + user.lname}</div>
+      <div className='title mt-3 fs-2 text-center'>{user.fName + " " + user.lName}</div>
       <hr/>
       <div className='sidebar fw-bolder list-style-none'>
         <ul>

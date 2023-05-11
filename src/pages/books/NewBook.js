@@ -4,9 +4,11 @@ import UserLayout from '../../components/layout/UserLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CustomInput } from '../../components/customInput/CustomInput'
+import { useDispatch } from 'react-redux'
+import { addNewBookAction } from './BookAction'
 
 const NewBook = () => {
-
+  const dispatch = useDispatch()
   const [form, setForm] = useState({});
 
   const handleOnChange = (e) => {
@@ -18,6 +20,7 @@ const NewBook = () => {
 
   const handleOnSubmit = async (e) => {
       e.preventDefault();
+      dispatch(addNewBookAction(form))
     }
 
   const inputs = [
