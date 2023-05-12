@@ -1,34 +1,37 @@
+import {Image } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
+import { useSelector } from 'react-redux';
+import "./booktable.css"
 
 export const BookTable = ()=> {
+
+  const {book} = useSelector((state)=>state.books)
+   
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead className='text-center'>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Thumbnail</th>
+          <th>Book Title- Year</th>
+          <th>Author</th>
+          <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody className='text-start'>
+        {book.map((item) =>(
+          <tr>
           <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>
+          <Image className='bookTableImg d-flex' src={item.url} rounded />
+        </td>
+          <td>{item.title + " - " + item.year}</td>
+          <td>{item.name}</td>
           <td>@mdo</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        ))}
+        
+       
       </tbody>
     </Table>
   );
