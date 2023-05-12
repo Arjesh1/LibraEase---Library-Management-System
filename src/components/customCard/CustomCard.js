@@ -1,12 +1,13 @@
 import Card from "react-bootstrap/Card";
 import Rating from "../rating/Rating";
+import "./customcard.css"
 
 
 export const CustomCard = ({ name, year, title, id, url, summary, rating }) => {
   return (
     <>
       <Card className="mt-5" style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={url} />
+        <Card.Img className="cardImg" variant="top" src={url} />
         <Card.Body>
           <Card.Title className="fw-bold">{title}</Card.Title>
           <Card.Text>
