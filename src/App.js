@@ -16,6 +16,7 @@ import Profile from './pages/signup-signin/Profile';
 import History from './pages/History/History';
 import NewBook from './pages/books/NewBook';
 import Clients from './pages/clients/Clients';
+import BookLanding from './pages/books/BookLanding';
 
 function App() {
   const dispatch = useDispatch()
@@ -40,6 +41,7 @@ onAuthStateChanged(auth, (userData) =>{
       <BrowserRouter>
       <Routes>
       <Route path="/" element ={<Home/>}/>
+      <Route path="/book/:bookId" element ={<BookLanding/>}/>
       <Route path="signin" element ={<SignIn/>}/>
       <Route path="signup" element ={<SignUp/>}/>
 
