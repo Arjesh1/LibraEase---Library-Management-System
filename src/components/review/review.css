@@ -1,0 +1,24 @@
+.nameLogo{
+    background: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid rgb(21, 208, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
+.name{
+    margin-top: 5px;
+    text-align: center;
+}
+
+.review-content{
+    width: calc(100% - 130px);
+    margin-top: 3px;
+}
