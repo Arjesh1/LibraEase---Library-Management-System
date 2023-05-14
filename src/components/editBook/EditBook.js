@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PrivateRoute } from '../private-route/PrivateRoute'
 import UserLayout from '../layout/UserLayout'
 import { Button, Container, Form } from 'react-bootstrap'
@@ -8,9 +8,13 @@ import { useDispatch } from 'react-redux'
 import { addNewBookAction } from '../../pages/books/BookAction'
 
 
-export const EditBook = () => {
+export const EditBook = ({selectedBook}) => {
   const dispatch = useDispatch()
   const [form, setForm] = useState({});
+
+  useEffect(() =>{
+    setForm(selectedBook)
+  },[])
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +25,7 @@ export const EditBook = () => {
 
   const handleOnSubmit = async (e) => {
       e.preventDefault();
+      console.log(form);
       // dispatch(addNewBookAction(form))
     }
 
@@ -32,6 +37,7 @@ export const EditBook = () => {
       type: "text",
       placeholder: "Clean Code",
       required: true,
+      value: form?.title,
     },
 
     {
@@ -40,6 +46,7 @@ export const EditBook = () => {
       type: "text",
       placeholder: "Sam smith",
       required: true,
+      value: form?.name,
     },
     {
       label: "Published Year",
@@ -47,6 +54,7 @@ export const EditBook = () => {
       type: "number",
       placeholder: "2019",
       required: true,
+      value: form?.year,
     },
     
     {
@@ -55,6 +63,7 @@ export const EditBook = () => {
       type: "url",
       placeholder: "http://image.com",
       required: true,
+      value: form?.url,
     },
     {
       label: "Summary",
@@ -62,6 +71,7 @@ export const EditBook = () => {
       type: "text",
       as: "textarea",
       required: true,
+      value: form?.summary,
     },
   ];
   return (
@@ -72,7 +82,7 @@ export const EditBook = () => {
         
           <Form
           onSubmit={handleOnSubmit}
-          className=" m-auto bg-light p-4 mb-3"
+          className=" m-auto bg-light p-3 mb-3"
           style={{ width: "500px" }}
         >
       

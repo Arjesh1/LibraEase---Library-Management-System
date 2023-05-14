@@ -22,7 +22,6 @@ export const getAllBookAction = () => async(dispatch) =>{
                 id:doc.id
             })
         })
-        console.log(books);
         dispatch (setBook(books))
         
     } catch (error) {

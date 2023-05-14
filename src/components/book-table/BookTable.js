@@ -18,7 +18,7 @@ const dispatch = useDispatch()
   }, [dispatch, book])
 
 
-  const handleOnEdit = obj =>{
+  const handleOnEdit = (obj) =>{
     setSelectedBook(obj)
     dispatch(setModalShow(true))
 
@@ -27,7 +27,7 @@ const dispatch = useDispatch()
   return (
     <>
     <CustomModal heading="Edit book">
-    <EditBook/>
+    <EditBook selectedBook={selectedBook}/>
     </CustomModal>
    
     
@@ -44,7 +44,7 @@ const dispatch = useDispatch()
       </thead>
       <tbody className='text-start'>
         {book.map((item) =>(
-          <tr>
+          <tr key={item.id}>
           <td>1</td>
           <td>
           <Image className='bookTableImg d-flex' src={item.url} rounded />
