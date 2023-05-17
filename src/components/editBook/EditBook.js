@@ -5,7 +5,7 @@ import { Button, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CustomInput } from '../customInput/CustomInput'
 import { useDispatch } from 'react-redux'
-import { addNewBookAction } from '../../pages/books/BookAction'
+import { addNewBookAction, deleteBookAction, updateBookAction } from '../../pages/books/BookAction'
 
 
 export const EditBook = ({selectedBook}) => {
@@ -25,8 +25,18 @@ export const EditBook = ({selectedBook}) => {
 
   const handleOnSubmit = async (e) => {
       e.preventDefault();
-      console.log(form);
-      // dispatch(addNewBookAction(form))
+      if (window.confirm ("Are you sure you want to update this book? ")) {
+      dispatch(updateBookAction(form))
+      }
+      
+    }
+
+    const handleOnDelete = () =>{
+      if (window.confirm ("Are you sure you want to delete this book? ")) {
+        dispatch(deleteBookAction(form.id))
+        }
+      
+
     }
 
   const inputs = [
@@ -99,9 +109,16 @@ export const EditBook = ({selectedBook}) => {
               <Button variant="primary" type="submit">
                 Update Book
               </Button>
+
+              
             </div>
           </div>
         </Form>
+        <div className='d-grid   '  >
+        <Button variant="danger" className='m-auto' type="submit" style={{ width: "475px" }} onClick={handleOnDelete}>
+                Delete Book
+              </Button>
+              </div>
 
 
         </Container>
