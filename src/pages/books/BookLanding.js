@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
 import MainLayout from '../../components/layout/MainLayout'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Col, Container, Image, Row } from 'react-bootstrap'
 import Rating from '../../components/rating/Rating'
 import Review from '../../components/review/Review'
+import { createNewBurrowAction } from './BookAction'
+import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 
 
 
 const BookLanding = () => {
+    const dispatch = useDispatch()
     const {bookId} = useParams()
     const navigate = useNavigate()
     const { book } = useSelector((state)=> state.books)
@@ -21,22 +24,28 @@ const BookLanding = () => {
     })
 
     const selectedBook = book.find(item => item.id === bookId)
-    const { id, title, url, name, year, summary} = selectedBook
+    const { id, title, url, name, year, summary, isAvailable, availableFrom} = selectedBook
 
     const handleOnBurrow =() =>{
+
+        const {uid, fName} = user
         if(user.uid){
             //create burrrowhistory table and add following obj
             const defaultBurrowDay= 14
-            // const obj = {
-            //     bookId,
-            //     bookName,
-            //     userName,
-            //     userId,
-            //     burrowingAt,
-            //     returnAt,
-            //     hasReturned,
+            const obj = {
+                bookId: id,
+                bookName: title,
+                userName: fName,
+                userId: uid,
+                burrowingAt: Date.now(),
+                returnAt: Date.now() + ( defaultBurrowDay *24*60*60*1000) ,
+                hasReturned: false 
 
-            // }
+                
+
+            }
+            dispatch(createNewBurrowAction(obj))
+            return;
        
        
         }
@@ -45,6 +54,10 @@ const BookLanding = () => {
   return (
    <MainLayout>
     <Container className='mt-5'>
+    <Link to ="/">
+            <Button variant='secondary'> <BsFillArrowLeftCircleFill/>  Back</Button>
+
+          </Link>
         <Row className='mt-5'>
     <Col sm={5}>
     <Image className='bookLandingImg d-flex' width={"100%"} height={"700vh"} src={url} rounded />
@@ -60,7 +73,11 @@ const BookLanding = () => {
         <Button  className='mt-3 mb-2' disabled={true} >Login to Burrow</Button>
 
     ):(
-         <Button onClick={handleOnBurrow} className='mt-3 mb-2'>Burrow Now</Button>
+        isAvailable ?
+         <Button onClick={handleOnBurrow} className='mt-3 mb-2'>Burrow Now</Button> :
+         <Button  className='mt-3 mb-2' disabled={true} >Available From: </Button>
+
+
     ) 
     }
     

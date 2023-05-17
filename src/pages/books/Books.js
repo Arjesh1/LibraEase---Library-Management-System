@@ -10,8 +10,8 @@ const Books = () => {
 
   <PrivateRoute>
       <UserLayout>
-        <Container>
-          <h3>Books</h3>
+        <Container >
+          <h3 className='text-center'>Books</h3>
 
           <hr/>
 

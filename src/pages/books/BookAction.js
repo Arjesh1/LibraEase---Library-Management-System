@@ -40,6 +40,7 @@ export const addNewBookAction = (bookObj) => async(dispatch) => {
         if(docRef?.id){
             toast.success("Book has been added")
             dispatch(getAllBookAction());
+          
             return;
         }
         toast.error("Unable to add book at this time. Try back again later")
@@ -93,4 +94,37 @@ export const deleteBookAction = (id) => async(dispatch) => {
         
     }
 
+}
+
+
+// burrowing book section
+
+export const createNewBurrowAction = (obj) => async(dispatch) =>{
+    try {
+        const docSnap = await addDoc(collection(db, "burrow_history" ), obj)
+        if(docSnap?.id){
+            toast.success("Burow has been successful.")
+
+            //update the book
+            const updateObj = {
+                isAvailable: false,
+                availableFrom: obj.returnAt,
+                id: obj.bookId,
+            }
+
+
+
+
+
+            dispatch(updateBookAction(updateObj));
+            return;
+        }
+        toast.error("Unable to burrow book at this time. Try back again later")
+
+        
+    } catch (error) {
+        console.log(error);
+        toast.error(error.message)
+        
+    }
 }

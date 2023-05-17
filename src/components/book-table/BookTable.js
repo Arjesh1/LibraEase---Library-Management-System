@@ -43,9 +43,9 @@ const dispatch = useDispatch()
         </tr>
       </thead>
       <tbody className='text-start'>
-        {book.map((item) =>(
+        {book.map((item, i) =>(
           <tr key={item.id}>
-          <td>1</td>
+          <td>{i + 1}</td>
           <td>
           <Image className='bookTableImg d-flex' src={item.url} rounded />
         </td>

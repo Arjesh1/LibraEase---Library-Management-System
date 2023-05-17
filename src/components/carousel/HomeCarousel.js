@@ -9,7 +9,7 @@ export const HomeCarousel = () => {
     <Carousel fade>
     <Carousel.Item>
       <img className="d-block w-100" src={a} alt="First slide" />
-      <Carousel.Caption>
+      <Carousel.Caption className="text-dark">
         <h3>Welcome to digital library</h3>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </Carousel.Caption>

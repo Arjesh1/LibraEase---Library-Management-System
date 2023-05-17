@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { CustomInput } from '../../components/customInput/CustomInput'
 import { useDispatch } from 'react-redux'
 import { addNewBookAction } from './BookAction'
+import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 
 const NewBook = () => {
   const dispatch = useDispatch()
@@ -14,13 +15,14 @@ const NewBook = () => {
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [name]: value, isAvailable:true });
   };
 
 
   const handleOnSubmit = async (e) => {
       e.preventDefault();
       dispatch(addNewBookAction(form))
+      setForm({})
     }
 
   const inputs = [
@@ -62,6 +64,7 @@ const NewBook = () => {
       as: "textarea",
       required: true,
     },
+
   ];
   return (
 
@@ -71,7 +74,7 @@ const NewBook = () => {
           <h3>New Book</h3>
 
           <Link to ="/books">
-            <Button variant='secondary'> &lt; Back</Button>
+            <Button variant='secondary'> <BsFillArrowLeftCircleFill/> Back</Button>
 
           </Link>
 
@@ -90,6 +93,15 @@ const NewBook = () => {
             {inputs.map((item, i) => (
               <CustomInput key={i} {...item} onChange={handleOnChange} />
             ))}
+
+              {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Availability</Form.Label>
+              <Form.Select name="isAvailable" onChange={handleOnChange}>
+                <option value="">-- Select  --</option>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+              </Form.Select>
+            </Form.Group> */}
 
             <div className="d-grid">
               <Button variant="primary" type="submit">
