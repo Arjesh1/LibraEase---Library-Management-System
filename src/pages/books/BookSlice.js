@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
    book: [],
+   burrowHistory: [],
 }
 
 const bookSlice = createSlice({
@@ -14,9 +15,15 @@ const bookSlice = createSlice({
       
             state.book = payload;
           },
+
+          setBurrowHistory: (state, { payload }) => {
+            if (!state.burrowHistory.length && !payload.length) return;
+      
+            state.burrowHistory = payload;
+          },
     }
 })
 
-export const {setBook} = bookSlice.actions
+export const {setBook, setBurrowHistory} = bookSlice.actions
 
 export default bookSlice.reducer

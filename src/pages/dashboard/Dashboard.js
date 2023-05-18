@@ -9,7 +9,7 @@ const Dashboard = () => {
   <PrivateRoute>
       <UserLayout>
         <Container>
-          <h3>Dashboard</h3>
+          <h3 className='text-center'>Dashboard</h3>
 
           <hr/>
 

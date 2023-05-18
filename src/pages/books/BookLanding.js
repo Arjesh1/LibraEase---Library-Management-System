@@ -25,6 +25,10 @@ const BookLanding = () => {
 
     const selectedBook = book.find(item => item.id === bookId)
     const { id, title, url, name, year, summary, isAvailable, availableFrom} = selectedBook
+    const date = new Date(availableFrom * 1000);
+    const dateFrom = date.toUTCString()
+    
+    
 
     const handleOnBurrow =() =>{
 
@@ -33,8 +37,11 @@ const BookLanding = () => {
             //create burrrowhistory table and add following obj
             const defaultBurrowDay= 14
             const obj = {
+                url: url,
                 bookId: id,
                 bookName: title,
+                author: name,
+                year:year,
                 userName: fName,
                 userId: uid,
                 burrowingAt: Date.now(),
@@ -75,7 +82,7 @@ const BookLanding = () => {
     ):(
         isAvailable ?
          <Button onClick={handleOnBurrow} className='mt-3 mb-2'>Burrow Now</Button> :
-         <Button  className='mt-3 mb-2' disabled={true} >Available From: </Button>
+         <Button  className='mt-3 mb-2' disabled={true} >Available From: {new Date(availableFrom).toDateString()} </Button>
 
 
     ) 

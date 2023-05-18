@@ -11,7 +11,7 @@ export const UserLayout = ({children}) => {
     <div className='user-Layout'>
 
       <div className='left bg-dark p-2 pt-5'>
-      <div className='title mt-3 fs-2 text-center'>{user.fName + " " + user.lName}</div>
+      <div className='title mt-4 fs-2 text-center'>{user.fName + " " + user.lName}</div>
       <hr/>
       <div className='sidebar fw-bolder list-style-none'>
         <ul>

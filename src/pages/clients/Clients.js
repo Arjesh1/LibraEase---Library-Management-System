@@ -9,7 +9,7 @@ const Clients = () => {
   <PrivateRoute>
       <UserLayout>
         <Container>
-          <h3>Clients</h3>
+          <h3 className='text-center'>Clients</h3>
 
           <hr/>
 

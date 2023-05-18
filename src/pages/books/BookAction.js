@@ -1,8 +1,9 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "../../config/firebase-config"
 import { toast } from "react-toastify"
 import { setBook } from "./BookSlice"
 import { setModalShow } from "../../system/systemSlice"
+import { setBurrowHistory } from "./BookSlice"
 
 
 //get book action
@@ -124,6 +125,37 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
         
     } catch (error) {
         console.log(error);
+        toast.error(error.message)
+        
+    }
+}
+
+//import burrow record
+export const getBurrowBookAction = (userId) => async(dispatch) =>{
+    try {
+        const q = query(collection(db, "burrow_history"), where ("userId" , "==", userId))
+        const docSnapShot = await getDocs(q)
+
+        let burrow = []                     
+
+
+
+        docSnapShot.forEach((doc) =>{
+            const id = doc.id
+            const data = doc.data()
+
+            burrow.push({
+                ...data,
+                id
+            })
+        })
+
+       
+
+        dispatch(setBurrowHistory(burrow))
+        
+    } catch (error) {
+        
         toast.error(error.message)
         
     }

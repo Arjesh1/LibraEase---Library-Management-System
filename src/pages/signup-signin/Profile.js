@@ -9,7 +9,7 @@ const Profile = () => {
   <PrivateRoute>
       <UserLayout>
         <Container>
-          <h3>Profile</h3>
+          <h3 className='text-center'>Profile</h3>
 
           <hr/>
 
