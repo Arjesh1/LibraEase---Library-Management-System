@@ -119,7 +119,7 @@ const SignUp = () => {
 
             <div className="d-grid">
               <Button variant="primary" type="submit">
-                Regist Now!
+                Register Now!
               </Button>
             </div>
           </div>
