@@ -17,8 +17,7 @@ export const UserLayout = ({children}) => {
       <hr/>
       <div className='sidebar fw-bolder list-style-none'>
         <ul>
-          {/* for all type of user */}
-
+          
           {user.role === "admin" ? (
             // for admin 
   <>

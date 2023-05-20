@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import "./historytable.css"
 import { useEffect } from 'react';
-import { getBurrowBookAction } from '../../pages/books/BookAction';
+import { getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
 import { Button, Image } from 'react-bootstrap';
 
 
@@ -18,7 +18,9 @@ export const HistoryTable = ()=> {
   }, [user?.uid, dispatch ])
 
 
-  const handleOnReturn = () =>{
+  const handleOnReturn = ({id, bookId, userId}) =>{
+if (window.confirm("Are you sure you want to return the book."))
+    dispatch(returnBookAction({id, bookId, userId}))
 
   }
 
@@ -54,7 +56,14 @@ export const HistoryTable = ()=> {
           <td>{new Date(item.burrowingAt).toDateString()}</td>
           <td>{new Date(item.returnAt).toDateString()}</td>
           <td>
-          <Button variant='warning' onClick={() => handleOnReturn(item)}>Return</Button>
+            {
+              item.hasReturned ?(
+                <Button variant='warning' >Give Review</Button>
+                ):(
+                  <Button variant='primary' onClick={() => handleOnReturn(item)}>Return</Button>
+                )
+            }
+          
             
           </td>
         </tr>

@@ -117,7 +117,7 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
 
 
 
-            dispatch(updateBookAction(updateObj));
+            // dispatch(updateBookAction(updateObj));
             return;
         }
         toast.error("Unable to burrow book at this time. Try back again later")
@@ -156,6 +156,43 @@ export const getBurrowBookAction = (userId) => async(dispatch) =>{
         
     } catch (error) {
         
+        toast.error(error.message)
+        
+    }
+}
+
+
+//return book
+
+export const returnBookAction = ({id, bookId, userId}) => async (dispatch) =>{
+
+    try {
+
+        //update burrow-history
+
+        const updateBurrowHistoryObj = {
+            returnAt: Date.now(),
+            hasReturned: true,
+    }
+
+    const updateBookObj = {
+        availableFrom: null,
+        isAvailable: true,
+}
+    await setDoc(doc(db,'burrow_history', id), updateBurrowHistoryObj, {merge:true})
+
+
+
+        // update book table
+
+        await setDoc(doc(db,'books', bookId), updateBookObj, {merge:true})
+toast.success("Book has been returned.")
+
+        dispatch(getAllBookAction())
+        dispatch(getBurrowBookAction(userId))
+        
+    } catch (error) {
+        console.log(error);
         toast.error(error.message)
         
     }
