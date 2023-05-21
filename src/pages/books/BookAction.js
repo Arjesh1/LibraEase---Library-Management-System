@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "../../config/firebase-config"
 import { toast } from "react-toastify"
-import { setBook } from "./BookSlice"
+import { setBook, setReviews } from "./BookSlice"
 import { setModalShow } from "../../system/systemSlice"
 import { setBurrowHistory } from "./BookSlice"
 
@@ -250,3 +250,30 @@ export const addNewReviewAction = (reviewObj) => async(dispatch) => {
         
     }
 }
+
+//get reviews for selected books
+export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
+    try {
+      const q = query(collection(db, "reviews"), where("bookId", "==", bookId));
+  
+      const { docs } = await getDocs(q);
+  
+      console.log(docs);
+  
+      if (docs.length) {
+        let reviews = [];
+        docs.forEach((doc) => {
+          const reviewObj = { id: doc.id, ...doc.data() };
+          reviews.push(reviewObj);
+        });
+  
+        dispatch(setReviews(reviews));
+      }
+    } catch (error) {
+      //log the error
+      console.log(error);
+      toast.error(
+        "Something went wrong, we could not process your request at the moment, please try again later."
+      );
+    }
+  };

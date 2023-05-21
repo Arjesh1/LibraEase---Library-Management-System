@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Col, Container, Image, Row } from 'react-bootstrap'
 import Rating from '../../components/rating/Rating'
 import Review from '../../components/review/Review'
-import { createNewBurrowAction } from './BookAction'
+import { createNewBurrowAction, getSelectedBookReviewsAction } from './BookAction'
 import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
+import { setReviews } from './BookSlice'
 
 
 
@@ -21,7 +22,14 @@ const BookLanding = () => {
         if (!book.length) {
             navigate("/")
         }
-    })
+
+
+        //fetch all books for selected book
+        dispatch(getSelectedBookReviewsAction(bookId))
+        return () => {
+            dispatch(setReviews([]));
+        }
+    }, [bookId, dispatch, navigate, book.length])
 
     const selectedBook = book.find(item => item.id === bookId)
     const { id, title, url, name, year, summary, isAvailable, availableFrom} = selectedBook
