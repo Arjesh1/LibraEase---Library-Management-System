@@ -197,3 +197,25 @@ toast.success("Book has been returned.")
         
     }
 }
+
+
+// add review
+export const addNewReviewAction = (reviewObj) => async(dispatch) => {
+    try {
+        const docRef = await addDoc(collection(db, "reviews"), reviewObj)
+        
+        if(docRef?.id){
+            toast.success("review has been added")
+            // dispatch(getAllreviewAction());
+          
+            return;
+        }
+        toast.error("Unable to add review at this time. Try back again later")
+
+      
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}

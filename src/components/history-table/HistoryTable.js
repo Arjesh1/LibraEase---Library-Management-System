@@ -1,16 +1,20 @@
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import "./historytable.css"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
 import { Button, Image } from 'react-bootstrap';
+import ReviewForm from '../review/ReviewForm';
+import { setModalShow } from '../../system/systemSlice';
+import { CustomModal } from '../customModal/CustomModal';
 
 
 export const HistoryTable = ()=> {
-
+  const dispatch = useDispatch()
   const {user} = useSelector(state => state.user)
   const {burrowHistory} = useSelector(state => state.books)
-  const dispatch = useDispatch()
+  const [bookForReview, setBookForReview ]= useState({})
+  
 
   useEffect (()=>{
     dispatch(getBurrowBookAction(user?.uid))
@@ -24,12 +28,18 @@ if (window.confirm("Are you sure you want to return the book."))
 
   }
 
+  const handleOnReview = item =>{
+    setBookForReview(item)
+    dispatch(setModalShow(true))
+  }
+
   
    
   return (
     <>
-    
-   
+    <CustomModal heading={"Give Review"}>
+   <ReviewForm bookForReview  ={bookForReview}/>
+   </CustomModal>
     
     <Table striped bordered hover>
       <thead className='text-center'>
@@ -58,7 +68,7 @@ if (window.confirm("Are you sure you want to return the book."))
           <td>
             {
               item.hasReturned ?(
-                <Button variant='warning' >Give Review</Button>
+                <Button variant='warning' onClick={() => handleOnReview(item)} >Give Review</Button>
                 ):(
                   <Button variant='primary' onClick={() => handleOnReturn(item)}>Return</Button>
                 )

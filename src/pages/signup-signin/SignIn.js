@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from './userAction'
-import {  useNavigate } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const SignIn = () => {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    user?.uid && navigate("/dashboard");
+    user?.uid && navigate("/");
   }, [user.uid]);
 
   const handleOnChange = (e) => {
@@ -74,7 +74,14 @@ const SignIn = () => {
               </Button>
             </div>
           </div>
+          <div className="d-grid mt-4">
+          <Link to ="/signup">
+          <Button>Register Now!</Button>
+          </Link>
+          </div>
+         
         </Form>
+        
       </Container>
     </MainLayout>
   );

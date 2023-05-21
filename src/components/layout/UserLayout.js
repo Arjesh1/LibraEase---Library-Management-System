@@ -17,24 +17,20 @@ export const UserLayout = ({children}) => {
       <hr/>
       <div className='sidebar fw-bolder list-style-none'>
         <ul>
-          
-          {user.role === "admin" ? (
-            // for admin 
-  <>
-    <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
+        {/* for all user */}
+
+        <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
     <li><Link className='nav-link' to="/history">History</Link></li>
     <li><Link className='nav-link' to="/profile">Profile</Link></li>
+          
+          {user.role === "admin" && (
+            // for admin 
+  <>
+    
     <li><Link className='nav-link' to="/books">Books</Link></li>
     <li><Link className='nav-link' to="/clients">Clients</Link></li>
   </>
-) : (
-  // for user 
-  <>
-    <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
-    <li><Link className='nav-link' to="/history">History</Link></li>
-    <li><Link className='nav-link' to="/profile">Profile</Link></li>
-  </>
-)}
+) }
           
 
           
