@@ -130,6 +130,28 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
     }
 }
 
+//update reviewId and ratings
+export const updateBurrowBookAction = ({id, userId, ...obj}) => async(dispatch) =>{
+    try {
+        await setDoc(doc(db, "burrow_history", id ), obj, {
+            merge: true
+
+        })
+
+        //fetching all the burrow history of the specific user
+
+        dispatch(getBurrowBookAction(userId))
+        
+        return;
+
+        
+    } catch (error) {
+        console.log(error);
+        toast.error(error.message)
+        
+    }
+}
+
 //import burrow record
 export const getBurrowBookAction = (userId) => async(dispatch) =>{
     try {
@@ -202,11 +224,20 @@ toast.success("Book has been returned.")
 // add review
 export const addNewReviewAction = (reviewObj) => async(dispatch) => {
     try {
+        const {bookId, userId, burrowHistoryId, ratings} = reviewObj
         const docRef = await addDoc(collection(db, "reviews"), reviewObj)
         
         if(docRef?.id){
             toast.success("review has been added")
             // dispatch(getAllreviewAction());
+
+            const obj = {
+                id: burrowHistoryId,
+                userId,
+                reviewId: docRef.id, 
+                ratings,
+            }
+            dispatch(updateBurrowBookAction(obj))
           
             return;
         }

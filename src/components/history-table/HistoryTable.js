@@ -7,6 +7,7 @@ import { Button, Image } from 'react-bootstrap';
 import ReviewForm from '../review/ReviewForm';
 import { setModalShow } from '../../system/systemSlice';
 import { CustomModal } from '../customModal/CustomModal';
+import Rating from '../rating/Rating';
 
 
 export const HistoryTable = ()=> {
@@ -66,13 +67,29 @@ if (window.confirm("Are you sure you want to return the book."))
           <td>{new Date(item.burrowingAt).toDateString()}</td>
           <td>{new Date(item.returnAt).toDateString()}</td>
           <td>
-            {
-              item.hasReturned ?(
-                <Button variant='warning' onClick={() => handleOnReview(item)} >Give Review</Button>
-                ):(
-                  <Button variant='primary' onClick={() => handleOnReturn(item)}>Return</Button>
-                )
-            }
+          {item.hasReturned ? (
+                  item.reviewId ? (
+                    <>
+                      <Rating rate={item.ratings} />
+                      <br />
+                      <Button variant="outline-danger">Delete review</Button>
+                    </>
+                  ) : (
+                    <Button
+                      variant="warning"
+                      onClick={() => handleOnReview(item)}
+                    >
+                      Give Review
+                    </Button>
+                  )
+                ) : (
+                  <Button
+                    variant="primary"
+                    onClick={() => handleOnReturn(item)}
+                  >
+                    Return Book
+                  </Button>
+                )}
           
             
           </td>
