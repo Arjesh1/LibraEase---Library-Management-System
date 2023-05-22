@@ -13,23 +13,24 @@ import { setReviews } from './BookSlice'
 
 const BookLanding = () => {
     const dispatch = useDispatch()
-    const {bookId} = useParams()
+    const {bookId} = useParams() 
     const navigate = useNavigate()
     const { book } = useSelector((state)=> state.books)
     const { user } = useSelector((state)=> state.user)
 
-    useEffect(() =>{
+    useEffect(() => {
         if (!book.length) {
-            navigate("/")
+          navigate("/");
         }
-
-
-        //fetch all books for selected book
-        dispatch(getSelectedBookReviewsAction(bookId))
+    
+        // fetch all reivew for this book
+        dispatch(getSelectedBookReviewsAction(bookId));
+    
         return () => {
-            dispatch(setReviews([]));
-        }
-    }, [bookId, dispatch, navigate, book.length])
+          dispatch(setReviews([]));
+        };
+      }, [bookId, dispatch, navigate, book.length]);
+    
 
     const selectedBook = book.find(item => item.id === bookId)
     const { id, title, url, name, year, summary, isAvailable, availableFrom} = selectedBook

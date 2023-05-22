@@ -117,7 +117,7 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
 
 
 
-            // dispatch(updateBookAction(updateObj));
+            dispatch(updateBookAction(updateObj));
             return;
         }
         toast.error("Unable to burrow book at this time. Try back again later")
@@ -266,6 +266,8 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
           const reviewObj = { id: doc.id, ...doc.data() };
           reviews.push(reviewObj);
         });
+
+        console.log(reviews);
   
         dispatch(setReviews(reviews));
       }

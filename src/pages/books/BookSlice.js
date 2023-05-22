@@ -24,7 +24,7 @@ const bookSlice = createSlice({
           },
 
           setReviews: (state, { payload }) => {
-            if (!state.Reviews.length && !payload.length) return;
+            if (!state.reviews.length && !payload.length) return;
       
             state.reviews = payload;
           },
