@@ -11,7 +11,7 @@ import { CustomCard } from '../../components/customCard/CustomCard';
 const Home = () => {
   const dispatch = useDispatch();
   const [display, setDisplay] = useState([]);
-  const { book } = useSelector((state) => state.books);
+  const { book,  } = useSelector((state) => state.books);
 
   useEffect(() => {
     !display.length && dispatch(getAllBookAction());

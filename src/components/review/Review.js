@@ -1,8 +1,10 @@
 import React from 'react'
 import Rating from '../rating/Rating'
 import './review.css'
+import { useSelector } from 'react-redux'
 
 const Review = () => {
+  const {reviews} = useSelector(state => state.books)
   return (
     <div className='d-flex justify-content-between gap-2 border p-5 shadow-lg mb-5'>
         <div className='avatar '>

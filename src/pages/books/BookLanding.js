@@ -15,7 +15,7 @@ const BookLanding = () => {
     const dispatch = useDispatch()
     const {bookId} = useParams() 
     const navigate = useNavigate()
-    const { book } = useSelector((state)=> state.books)
+    const { book, reviews } = useSelector((state)=> state.books)
     const { user } = useSelector((state)=> state.user)
 
     useEffect(() => {
@@ -66,6 +66,9 @@ const BookLanding = () => {
        
         }
     }
+
+    const rate = reviews.reduce((acc, {ratings}) => acc = +ratings, 0) / reviews.length
+    
     
   return (
    <MainLayout>
@@ -84,7 +87,7 @@ const BookLanding = () => {
     <h3>{title + " - " + year} </h3>
     <h5>{name}</h5>
     <br/>
-    <Rating rate= {5} />
+    <Rating rate= {rate} />
     {!user.uid ? (
         <Button  className='mt-3 mb-2' disabled={true} >Login to Burrow</Button>
 
@@ -113,10 +116,7 @@ const BookLanding = () => {
             <h4>Reviews</h4>
             <div className='review-List'>
                 <Review />
-                <Review />
-                <Review />
-                <Review />
-                <Review />
+                
             </div>
             </Col>
         </Row>
