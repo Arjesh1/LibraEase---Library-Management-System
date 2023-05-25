@@ -67,12 +67,13 @@ const BookLanding = () => {
         }
     }
 
-    const rate = reviews.reduce((acc, {ratings}) => acc = +ratings, 0) / reviews.length
+    const rate = reviews?.length? 
+    reviews.reduce((acc, {ratings}) => acc + +ratings, 0) / reviews.length:5
     
     
   return (
    <MainLayout>
-    <Container className='mt-5'>
+    <Container className='mt-5 mb-5'>
     <Link to ="/">
             <Button variant='secondary'> <BsFillArrowLeftCircleFill/>  Back</Button>
 
@@ -115,7 +116,23 @@ const BookLanding = () => {
 
             <h4>Reviews</h4>
             <div className='review-List'>
-                <Review />
+
+              {!reviews.length?(
+                <>
+                <h5 > No reviews found.</h5>
+                </>
+
+              ):(
+                <>
+                {reviews.map((item) =>
+                  <Review key={item.id} {...item}/>
+                  )}
+                  </>
+
+              )}
+
+              
+                
                 
             </div>
             </Col>

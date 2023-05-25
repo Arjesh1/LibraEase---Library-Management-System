@@ -258,7 +258,7 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
   
       const { docs } = await getDocs(q);
   
-      console.log(docs);
+      
   
       if (docs.length) {
         let reviews = [];
@@ -267,7 +267,7 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
           reviews.push(reviewObj);
         });
 
-        console.log(reviews);
+       
   
         dispatch(setReviews(reviews));
       }

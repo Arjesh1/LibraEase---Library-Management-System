@@ -3,19 +3,18 @@ import Rating from '../rating/Rating'
 import './review.css'
 import { useSelector } from 'react-redux'
 
-const Review = () => {
-  const {reviews} = useSelector(state => state.books)
+const Review = ({userName, title, ratings, feedback   }) => {
   return (
     <div className='d-flex justify-content-between gap-2 border p-5 shadow-lg mb-5'>
         <div className='avatar '>
-            <div className='nameLogo'>AK</div>
-            <div className='name'>Arjesh Khadka</div>
+            <div className='nameLogo'> {userName[0].toUpperCase()}</div>
+            <div className='name'> {userName}</div>
         </div>
 
         <div className='review-content '>
-            <h4>Best Book</h4>
-            <Rating rate={2} />
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            <h4>{title}</h4>
+            <Rating rate={ratings} />
+            <p> {feedback}
             </p>
         </div>
       
