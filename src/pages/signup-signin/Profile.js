@@ -3,13 +3,19 @@ import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateProfileAction } from './userAction'
+import { BsWindowSidebar } from 'react-icons/bs'
+import { sendPasswordResetEmail } from 'firebase/auth'
+import { toast } from 'react-toastify'
+import { auth } from '../../config/firebase-config'
+
 
 
 
 
 const Profile = () => {
-
+const dispatch = useDispatch()
   const [form, setForm] = useState({})
   const { user }= useSelector(state => state.user)
 
@@ -29,6 +35,33 @@ const Profile = () => {
 
   const handleOnSubmit = (e) =>{
     e.preventDefault()
+
+    if(!window.confirm("Are you sure you want to update your details?"))
+    return;
+    const {email, role, uid, ...rest} = form
+    const obj = {
+      id:uid,
+      ...rest
+    }
+    dispatch(updateProfileAction(obj))
+  }
+
+  const handleOnPasswordReset = () =>{
+    try {
+      if(window.confirm("Are you sure you want to reset your password?")){
+
+        //firebase sends emialwith password reset link
+        sendPasswordResetEmail(auth, form.email).then(resp=>{
+          console.log(resp);
+          toast.success("Password reset link has been sent.")
+        })
+      }
+
+    } catch (error) {
+      console.log(error.message);
+      
+    }
+
   }
 
 
@@ -42,6 +75,7 @@ const Profile = () => {
       value: form.role,
       required: true,
       disabled: true,
+     
       
     },
     {
@@ -50,7 +84,7 @@ const Profile = () => {
       type: "text",
       value: form.fName,
       required: true,
-      disabled: true,
+      
       
     },
     {
@@ -59,7 +93,7 @@ const Profile = () => {
       type: "text",
       value: form.lName,
       required: true,
-      disabled: true,
+   
       
     },
     {
@@ -78,12 +112,14 @@ const Profile = () => {
 
   <PrivateRoute>
       <UserLayout>
-        <Container>
+        <Container > 
           <h3 className='text-center'>Profile</h3>
 
           <hr/>
 
-        <Form className='mt-3 ' onSubmit={handleOnSubmit}>
+          <div className='d-flex justify-content-center mb-5'>
+
+        <Form className='mt-3 w-50 bg-light p-5 rounded-5 text-dark bg-opacity-50' onSubmit={handleOnSubmit}>
 
         {inputs.map((item, i) => (
               <CustomInput key={i} {...item} onChange={handleOnChange} />
@@ -96,15 +132,24 @@ const Profile = () => {
                 Update
               </Button>
             </div>
+            <Form.Text className="text-muted">
+              You cannot change your role and email  at this time. Please contact administration.
+            </Form.Text>
 
-        </Form>
+            <hr/>
 
-        
-        <div className="d-grid mt-3">
-              <Button variant="danger" type="submit">
-                Password Reset
+
+            <div className="d-grid mt-3">
+              <Button variant="danger" onClick={handleOnPasswordReset} >
+               Request Password Reset
               </Button>
         </div>
+
+        </Form>
+        </div>
+
+        
+        
 
 
 

@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {MainLayout} from '../../components/layout/MainLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
 import { toast } from 'react-toastify'
-import {auth, db} from "../../config/firebase-config"
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from './userAction'
-import {  Link, useNavigate } from 'react-router-dom'
+import {auth} from "../../config/firebase-config"
+import { sendPasswordResetEmail } from 'firebase/auth'
 
-const SignIn = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+
+const PasswordReset = () => {
+  
   const [form, setForm] = useState({});
-  const { user } = useSelector((state) => state.user);
+  
 
-  useEffect(() => {
-    user?.uid && navigate("/");
-  }, [user.uid]);
+  
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +24,22 @@ const SignIn = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(loginUser(form));
+    
+    try {
+      if(window.confirm("Are you sure you want to reset your password?")){
+
+        //firebase sends emialwith password reset link
+        sendPasswordResetEmail(auth, form.email).then(resp=>{
+          toast.success("Password reset link has been sent.")
+        })
+      }
+
+    } catch (error) {
+      console.log(error.message);
+      
+    }
+
+   
   };
 
   const inputs = [
@@ -40,13 +50,7 @@ const SignIn = () => {
       placeholder: "Samsmith@email.com",
       required: true,
     },
-    {
-      label: "Password",
-      name: "password",
-      type: "password",
-      placeholder: "xxxxxxxxxx",
-      required: true,
-    },
+    
   ];
 
   
@@ -60,8 +64,12 @@ const SignIn = () => {
           style={{ width: "400px" }}
         >
           <h3 className="text-primary fw-bolder mb-3">
-            Welcome Back to Comunity
+            Forget Password
           </h3>
+
+          <Form.Text className="text-muted">
+              We will send you the password reset link if we find you in our system.
+            </Form.Text>
 
           <div className="mt-5">
             {inputs.map((item, i) => (
@@ -69,24 +77,15 @@ const SignIn = () => {
             ))}
             </div>
 
-            <div className="d-grid">
-            <Link to ="/password_reset" className='nav-link'>
-          <p className='text-end'>Forget Password?</p>
-          </Link>
-            </div>
+           
 
             <div className="d-grid">
               <Button variant="primary" type="submit">
-                Login 
+                Submit 
               </Button>
             </div>
           
-          <div className="d-grid mt-4 ">
-            <p>Not yet registered?</p>
-          <Link to ="/signup" className='d-grid'>
-          <Button>Register Now!</Button>
-          </Link>
-          </div>
+         
          
         </Form>
         
@@ -95,4 +94,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default PasswordReset;

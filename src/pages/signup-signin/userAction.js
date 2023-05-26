@@ -41,3 +41,20 @@ export const loginUser = (data) => async (dispatch) => {
     toast.error(error.message);
   }
 };
+
+// update profile
+
+export const updateProfileAction = ({id, ...rest}) => async(dispatch) =>{
+  try {
+    await setDoc(doc(db, "user", id), rest, {merge:true});
+    toast.success(
+      "Your account has been updated successfull."
+    );
+    dispatch(getUserAction(id))
+    
+  } catch (error) {
+    toast.error("Account update failed. Please contact system administrator.")
+    console.log(error.message);
+    
+  }
+}

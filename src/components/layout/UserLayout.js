@@ -13,15 +13,25 @@ export const UserLayout = ({children}) => {
     <div className='user-Layout'>
 
       <div className='left bg-dark p-2 pt-5'>
-      <div className='title mt-4 fs-2 text-center'>{user.fName + " " + user.lName}</div>
-      <hr/>
+      <div className='title mt-4 fs-2 text-center '>{user.fName + " " + user.lName}
+      <hr className='mt-4'/></div>
+      
       <div className='sidebar fw-bolder list-style-none'>
         <ul>
         {/* for all user */}
 
         <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
-    <li><Link className='nav-link' to="/history">History</Link></li>
+    
     <li><Link className='nav-link' to="/profile">Profile</Link></li>
+
+    {user.role === "user" && (
+            // for user only 
+  <>
+    
+    <li><Link className='nav-link' to="/history">History</Link></li>
+  </>
+) }
+    
           
           {user.role === "admin" && (
             // for admin 
@@ -29,14 +39,14 @@ export const UserLayout = ({children}) => {
     
     <li><Link className='nav-link' to="/books">Books</Link></li>
     <li><Link className='nav-link' to="/clients">Clients</Link></li>
+    <li><Link className='nav-link' to="/book_history">Burrow History</Link></li>
   </>
 ) }
           
 
           
           
-          {/* <li><Link className='nav-link' to="">User</Link></li>
-          <li><Link className='nav-link' to="">Profile</Link></li> */}
+          
 
           
         </ul>

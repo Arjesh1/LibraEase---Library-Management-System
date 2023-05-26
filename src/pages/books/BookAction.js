@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "../../config/firebase-config"
 import { toast } from "react-toastify"
-import { setBook, setReviews } from "./BookSlice"
+import { setAllBurrowRecord, setBook, setReviews } from "./BookSlice"
 import { setModalShow } from "../../system/systemSlice"
 import { setBurrowHistory } from "./BookSlice"
 
@@ -152,7 +152,7 @@ export const updateBurrowBookAction = ({id, userId, ...obj}) => async(dispatch) 
     }
 }
 
-//import burrow record
+//import burrow record for logged user
 export const getBurrowBookAction = (userId) => async(dispatch) =>{
     try {
         const q = query(collection(db, "burrow_history"), where ("userId" , "==", userId))
@@ -183,6 +183,36 @@ export const getBurrowBookAction = (userId) => async(dispatch) =>{
     }
 }
 
+//import all burrow record 
+export const getAllBurrowBookAction = () => async(dispatch) =>{
+    try {
+        const q = query(collection(db, "burrow_history"))
+        const docSnapShot = await getDocs(q)
+
+        let burrow = []                     
+
+
+
+        docSnapShot.forEach((doc) =>{
+            const id = doc.id
+            const data = doc.data()
+
+            burrow.push({
+                ...data,
+                id
+            })
+        })
+
+        dispatch(setAllBurrowRecord(burrow)) 
+
+       
+        
+    } catch (error) {
+        
+        toast.error(error.message)
+        
+    }
+}
 
 //return book
 
@@ -238,6 +268,7 @@ export const addNewReviewAction = (reviewObj) => async(dispatch) => {
                 ratings,
             }
             dispatch(updateBurrowBookAction(obj))
+            dispatch(setModalShow(false))
           
             return;
         }

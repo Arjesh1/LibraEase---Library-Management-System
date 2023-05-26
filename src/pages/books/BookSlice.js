@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
    book: [],
    burrowHistory: [],
+   allBurrowRecord: [],
    reviews: [],
 }
 
@@ -28,9 +29,15 @@ const bookSlice = createSlice({
       
             state.reviews = payload;
           },
+
+          setAllBurrowRecord: (state, { payload }) => {
+            if (!state.allBurrowRecord.length && !payload.length) return;
+      
+            state.allBurrowRecord = payload;
+          },
     }
 })
 
-export const {setBook, setBurrowHistory, setReviews} = bookSlice.actions
+export const {setBook, setBurrowHistory, setReviews, setAllBurrowRecord} = bookSlice.actions
 
 export default bookSlice.reducer

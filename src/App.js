@@ -17,6 +17,8 @@ import History from './pages/History/History';
 import NewBook from './pages/books/NewBook';
 import Clients from './pages/clients/Clients';
 import BookLanding from './pages/books/BookLanding';
+import BurrowHistory from './pages/burrow-history/BurrowHistory';
+import PasswordReset from './pages/signup-signin/PasswordReset';
 
 function App() {
   const dispatch = useDispatch()
@@ -46,14 +48,17 @@ onAuthStateChanged(auth, (userData) =>{
       <Route path="/book/:bookId" element ={<BookLanding/>}/>
       <Route path="signin" element ={<SignIn/>}/>
       <Route path="signup" element ={<SignUp/>}/>
+      <Route path="history" element ={<History/>}/>
 
 
     <Route path="dashboard" element ={<Dashboard/>}/>
     <Route path="new-book" element ={<NewBook/>}/>
     <Route path="books" element ={<Books/>}/>
     <Route path="profile" element ={<Profile/>}/>
-    <Route path="history" element ={<History/>}/>
+    <Route path="book_history" element ={<BurrowHistory/>}/>
     <Route path="clients" element ={<Clients/>}/>
+    <Route path="password_reset" element ={<PasswordReset/>}/>
+
     
 
 
