@@ -10,11 +10,16 @@ export const UserLayout = ({children}) => {
   
  
   return (
+    <>
+   
+    
     <div className='user-Layout'>
 
-      <div className='left bg-dark p-2 pt-5'>
-      <div className='title mt-4 fs-2 text-center '>{user.fName + " " + user.lName}
-      <hr className='mt-4'/></div>
+      
+
+      <div className='left  text-dark p-2 pt-5'>
+      <div className='title fs-2 text-center pt-3 '>{user.fName + " " + user.lName}
+      <hr /></div>
       
       <div className='sidebar fw-bolder list-style-none'>
         <ul>
@@ -59,24 +64,36 @@ export const UserLayout = ({children}) => {
       
 
       <div className='right'>
-        {/* header section */}
-        <Header/>
+        
      
-
+ {/* header section */}
+ <div className='fixed-top'>
+    <Header />
+    </div>
 
 
 
         {/* main contetnt area */}
-       <div className='main pt-3'>{children}</div>
+       <div className='main ps-3 pt-4 mt-5 pb-5 mb-5'>{children}</div>
 
-        {/* footer section */}
 
-        <Footer/>
+{/* footer section */}
+
+<div className='fixed-bottom'>
+     <Footer/>
+    </div>
+        
       </div>
+
+     
 
         
       
     </div>
+     
+     
+
+    </>
   )
 }
 

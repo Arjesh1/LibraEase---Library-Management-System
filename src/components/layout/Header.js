@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../pages/signup-signin/userSlice';
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
+import logo from "../../assets/logo1.png";
 
 const Header = () => {
 
@@ -27,9 +28,10 @@ const handleOnSignOut = () => {
 
   return (
   <div>
-    <Navbar bg="dark" variant='dark' expand="md">
+    <Navbar bg="light" variant='light' expand="md" >
       <Container>
-        <Navbar.Brand href="/"><Link to="/"> E-B</Link></Navbar.Brand>
+        <Navbar.Brand href="/"><Link to="/"> <img className=" w-100" src={logo} alt="Logo" /> 
+        </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ms-4">
           <Nav className="ms-auto ">

@@ -1,5 +1,5 @@
 :root{
-    --mainbg: rgba(173, 220, 220, 0.655);
+    --mainbg: rgb(255, 255, 255);
 }
 
 body{
@@ -13,12 +13,11 @@ body{
 .navbar-brand{
     
     width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgb(174, 171, 171);
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .navbar-brand a{
@@ -32,11 +31,17 @@ body{
 
 }
 
+
+
 .left{
     
     min-width: 200px;
-    position: fixed;
+    background-image: url(./assets/dashboard.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover  ;
     height: 100%;
+    position: fixed;
     color: white;
 }
 

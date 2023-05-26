@@ -44,7 +44,7 @@ if (window.confirm("Are you sure you want to return the book."))
    <ReviewForm bookForReview  ={bookForReview}/>
    </CustomModal>
     
-    <Table striped bordered hover>
+    <Table striped bordered hover className='mb-5 pb-5'>
       <thead className='text-center'>
         <tr>
           <th>#</th>
