@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfileAction } from './userAction'
@@ -9,6 +9,8 @@ import { BsWindowSidebar } from 'react-icons/bs'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { auth } from '../../config/firebase-config'
+import Header from '../../components/layout/Header'
+import Footer from '../../components/layout/Footer'
 
 
 
@@ -111,42 +113,50 @@ const dispatch = useDispatch()
   return (
 
   <PrivateRoute>
-      <UserLayout>
+    <Header/>
+      
         <Container > 
-          <h3 className='text-center'>Profile</h3>
 
-          <hr/>
+        <Row>
+        <Col sm={5}>helllo</Col>
+        <Col sm={7}><div className='d-flex justify-content-center mb-5'>
 
-          <div className='d-flex justify-content-center mb-5'>
+<Form className='mt-3 w-50 bg-secondary p-5 rounded-5 text-dark bg-opacity-50' onSubmit={handleOnSubmit}>
 
-        <Form className='mt-3 w-50 bg-light p-5 rounded-5 text-dark bg-opacity-50' onSubmit={handleOnSubmit}>
+  <h2 className='text-center'>Profile</h2>
 
-        {inputs.map((item, i) => (
-              <CustomInput key={i} {...item} onChange={handleOnChange} />
-            ))}
-
-
-
-            <div className="d-grid">
-              <Button variant="primary" type="submit">
-                Update
-              </Button>
-            </div>
-            <Form.Text className="text-muted">
-              You cannot change your role and email  at this time. Please contact administration.
-            </Form.Text>
-
-            <hr/>
+{inputs.map((item, i) => (
+      <CustomInput key={i} {...item} onChange={handleOnChange} />
+    ))}
 
 
-            <div className="d-grid mt-3">
-              <Button variant="danger" onClick={handleOnPasswordReset} >
-               Request Password Reset
-              </Button>
-        </div>
 
-        </Form>
-        </div>
+    <div className="d-grid">
+      <Button variant="primary" type="submit">
+        Update
+      </Button>
+    </div>
+    <Form.Text className="text-muted">
+      You cannot change your role and email  at this time. Please contact administration.
+    </Form.Text>
+
+    <hr/>
+
+
+    <div className="d-grid mt-3">
+      <Button variant="danger" onClick={handleOnPasswordReset} >
+       Request Password Reset
+      </Button>
+</div>
+
+</Form>
+</div></Col>
+      </Row>
+          
+
+         
+
+          
 
         
         
@@ -156,7 +166,9 @@ const dispatch = useDispatch()
 
 
         </Container>
-      </UserLayout>
+
+        <Footer/>
+      
 
   </PrivateRoute>
   )

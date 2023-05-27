@@ -9,6 +9,8 @@ import { doc, setDoc } from 'firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from './userAction'
 import {  Link, useNavigate } from 'react-router-dom'
+import './signin_signup.css'
+import { FaUserCircle } from 'react-icons/fa'
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -53,17 +55,20 @@ const SignIn = () => {
 
   return (
     <MainLayout>
-      <Container className="mt-5">
+      <div className='signin'>
+      <Container className='mb-2'>
+        <br/>
         <Form
           onSubmit={handleOnSubmit}
-          className="border p-5 shadow-lg rounded m-auto bg-light  mb-3"
+          className="border p-5 shadow-lg rounded m-auto bg-light mt-2 mb-3"
           style={{ width: "400px" }}
         >
-          <h3 className="text-primary fw-bolder mb-3">
-            Welcome Back to Comunity
-          </h3>
 
-          <div className="mt-5">
+          <div className=' d-flex justify-content-center'>
+            <FaUserCircle className='icons'/>
+          </div>
+
+          <div className="mt-3">
             {inputs.map((item, i) => (
               <CustomInput key={i} {...item} onChange={handleOnChange} />
             ))}
@@ -91,6 +96,7 @@ const SignIn = () => {
         </Form>
         
       </Container>
+      </div>
     </MainLayout>
   );
 };

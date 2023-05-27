@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import {auth, db} from "../../config/firebase-config"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
+import { Link } from 'react-router-dom'
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 
 
 const SignUp = () => {
@@ -87,23 +89,26 @@ const SignUp = () => {
   ];
 
   return (
+
     <MainLayout>
-      <Container className="mt-5">
+      <div className='signup '>
+      <Container className="mb-5 ">
+      <Link to ="/signin">
+            <Button variant='secondary' className='mt-5'> <BsFillArrowLeftCircleFill/> Back</Button>
+
+          </Link>
         <Form
           onSubmit={handleOnSubmit}
-          className="border p-5 shadow-lg rounded m-auto bg-light  mb-3"
-          style={{ width: "400px" }}
+          className="border p-5 shadow-lg rounded m-auto bg-light   mb-3"
+          style={{ width: "450px" }}
         >
-          <h3 className="text-primary fw-bolder mb-3">Join Library Comunity</h3>
+          <h3 className="text-primary fw-bolder mb-3">Join Our Library Comunity</h3>
 
           <Form.Text>
             Anyone can create admin or user account for experiment purpose.
-            <br />
-            <br />
-            Once you are regustered, you will be redirected to Dashboard
-            automatically.
+          
           </Form.Text>
-          <div className="mt-5">
+          <div className="mt-3">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Account Type</Form.Label>
               <Form.Select name="role" onChange={handleOnChange}>
@@ -125,6 +130,7 @@ const SignUp = () => {
           </div>
         </Form>
       </Container>
+      </div>
     </MainLayout>
   );
 };

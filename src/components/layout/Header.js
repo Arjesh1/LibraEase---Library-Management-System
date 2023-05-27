@@ -12,11 +12,14 @@ import { setUser } from '../../pages/signup-signin/userSlice';
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import logo from "../../assets/logo1.png";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
 
 const dispatch = useDispatch()
 const {user} = useSelector((state)=>state.user)
+
+const{uid, role, fName} = user
 
 
 const handleOnSignOut = () => {
@@ -34,20 +37,80 @@ const handleOnSignOut = () => {
         </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ms-4">
-          <Nav className="ms-auto ">
-            {!user.uid ?
+          <Nav className="ms-auto fs-5 fw-medium ">
+            {!uid ?
             (<>
-            <Link to="/signin" className='nav-link'> <GoSignIn className='fs-3' /></Link>
-            <Link to="/signup" className='nav-link'> <FaUserEdit className='fs-3'/> </Link>
+            <Link to="/" className='nav-link'> Home</Link>
+            <Link to="/about" className='nav-link'> About Us</Link>
+            <Link to="/bookslist" className='nav-link'> Books</Link>
+            <Link to="/contact" className='nav-link'> Contact Us </Link>
+            <Link to="/signin" className='nav-link'> Sign In</Link>
             
             </>
             ):(
+             
               <>
-              <Link to="/dashboard" className='nav-link'> <AiFillDashboard className='fs-3' /></Link>
-            <Link to="#" className='nav-link' onClick={handleOnSignOut}> <GoSignOut className='fs-3'/> </Link>
+               <Link to="/" className='nav-link'> Home</Link>
+               <Link to="/about" className='nav-link'> About Us</Link>
+            <Link to="/bookslist" className='nav-link'> Books</Link>
+              <Link to="/contact" className='nav-link'> Contact Us </Link>
+              
+              {role === "admin" && (
+            <Link to="/dashboard" className='nav-link'> Dashboard <AiFillDashboard className='fs-3' /></Link>
+          )}
+
+{role === "user" && (
+               <Dropdown>
+               <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
+               {fName}
+               </Dropdown.Toggle>
+              
+         
+               <Dropdown.Menu>
+         
+               
+         
+               <Dropdown.Item ><Link to="/profile" className='nav-link' >Profile </Link></Dropdown.Item>
+                 <Dropdown.Item ><Link to="/history" className='nav-link' >History </Link></Dropdown.Item>
+                 <Dropdown.Item><Link to="#" className='nav-link' onClick={handleOnSignOut}>Sign Out </Link></Dropdown.Item>
+         
+         
+                 
+               </Dropdown.Menu>
+             </Dropdown>
+            
+        )}
+
+{role === "admin" && (
+               <Dropdown>
+               <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
+               {fName}
+               </Dropdown.Toggle>
+              
+         
+               <Dropdown.Menu>
+         
+               
+         
+               
+               <Dropdown.Item ><Link to="/profile" className='nav-link' >Profile </Link></Dropdown.Item>
+                 <Dropdown.Item><Link to="#" className='nav-link' onClick={handleOnSignOut}> Sign Out </Link></Dropdown.Item>
+         
+         
+                 
+               </Dropdown.Menu>
+             </Dropdown>
+            
+        )}
+
+       
+
+            
             </>
             )
           }
+
+          
 
           </Nav>
         </Navbar.Collapse>

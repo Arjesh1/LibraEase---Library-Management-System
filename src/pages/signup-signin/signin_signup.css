@@ -1,0 +1,31 @@
+.signin{
+    height: 80vh;
+    background-image: url(../../assets/signin.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.icons{
+    font-size: 10rem;
+}
+
+.forget_password{
+    height: 80vh;
+    background-image: url(../../assets/forget-password.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.signup{
+
+    height: 98vh;
+    background-image: url(../../assets/signup.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
