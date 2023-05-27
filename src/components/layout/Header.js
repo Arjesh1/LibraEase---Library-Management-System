@@ -31,7 +31,7 @@ const handleOnSignOut = () => {
 
   return (
   <div>
-    <Navbar bg="light" variant='light' expand="md" >
+    <Navbar bg="light" variant='light' expand="md" className='border-bottom border-black' >
       <Container>
         <Navbar.Brand href="/"><Link to="/"> <img className=" w-100" src={logo} alt="Logo" /> 
         </Link></Navbar.Brand>
@@ -42,7 +42,7 @@ const handleOnSignOut = () => {
             (<>
             <Link to="/" className='nav-link'> Home</Link>
             <Link to="/about" className='nav-link'> About Us</Link>
-            <Link to="/bookslist" className='nav-link'> Books</Link>
+            <Link to="/allBooks" className='nav-link'> Books</Link>
             <Link to="/contact" className='nav-link'> Contact Us </Link>
             <Link to="/signin" className='nav-link'> Sign In</Link>
             
@@ -52,7 +52,7 @@ const handleOnSignOut = () => {
               <>
                <Link to="/" className='nav-link'> Home</Link>
                <Link to="/about" className='nav-link'> About Us</Link>
-            <Link to="/bookslist" className='nav-link'> Books</Link>
+            <Link to="/allBooks" className='nav-link'> Books</Link>
               <Link to="/contact" className='nav-link'> Contact Us </Link>
               
               {role === "admin" && (
@@ -115,7 +115,10 @@ const handleOnSignOut = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      
     </Navbar>
+    
+    
   </div>
 )
   }

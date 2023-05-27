@@ -1,5 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import './App.css';
+import 'animate.css'
 import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashboard';
 import SignIn from './pages/signup-signin/SignIn';
@@ -20,6 +21,8 @@ import BookLanding from './pages/books/BookLanding';
 import BurrowHistory from './pages/burrow-history/BurrowHistory';
 import PasswordReset from './pages/signup-signin/PasswordReset';
 import { Contact } from './pages/contact/Contact';
+import { About } from './pages/about/About';
+import AllBooks from './pages/books/AllBooks';
 
 function App() {
   const dispatch = useDispatch()
@@ -51,6 +54,9 @@ onAuthStateChanged(auth, (userData) =>{
       <Route path="signin" element ={<SignIn/>}/>
       <Route path="signup" element ={<SignUp/>}/>
       <Route path="history" element ={<History/>}/>
+      <Route path='about' element={<About/>}/>
+      <Route path='allBooks' element={<AllBooks/>}/>
+
       
 
 

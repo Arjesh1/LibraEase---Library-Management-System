@@ -7,6 +7,9 @@ import { CustomInput } from '../../components/customInput/CustomInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookAction } from '../books/BookAction';
 import { CustomCard } from '../../components/customCard/CustomCard';
+import { BsFillArrowDownCircleFill } from 'react-icons/bs';
+import { AiOutlineArrowDown } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -37,9 +40,9 @@ const Home = () => {
       <Container className="mt-4 mb-5">
         <Row>
           <Col>
-            <h1>Exlopre the library</h1>
+            <h1>Explore the library</h1>
             <div className="d-flex justify-content-between mt-5">
-              <div> {display.length} Books found!</div>
+          
               <CustomInput
                 placeholder="Search book by title"
                 className=" "
@@ -48,13 +51,29 @@ const Home = () => {
             </div>
             <hr />
             <div className=" d-flex justify-content-between flex-wrap gap-2">
-              {display.map((item) =>(
-                <CustomCard className="mt-4" key={item.id} {...item}/>
-              ))}
+            {display.map((item, index) => {
+  if (index < 8) {
+    return (
+      <CustomCard className="mt-4" key={item.id} {...item} />
+    );
+  }
+  return null;
+})}
+
               
             </div>
           </Col>
         </Row>
+        <div className='d-flex justify-content-center mt-5'>
+
+        <Link className='nav-link' to ="/allBooks ">
+
+          <div className='border border-dark rounded-circle animate__animated animate__bounce'>
+            <AiOutlineArrowDown className='more'/>
+          </div>
+          </Link>
+
+        </div>
       </Container>
     </MainLayout>
   );
