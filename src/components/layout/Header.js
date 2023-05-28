@@ -37,14 +37,14 @@ const handleOnSignOut = () => {
         </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ms-4">
-          <Nav className="ms-auto fs-5 fw-medium ">
+          <Nav className="ms-auto gap-2  fs-5 fw-medium ">
             {!uid ?
             (<>
             <Link to="/" className='nav-link'> Home</Link>
             <Link to="/about" className='nav-link'> About Us</Link>
             <Link to="/allBooks" className='nav-link'> Books</Link>
             <Link to="/contact" className='nav-link'> Contact Us </Link>
-            <Link to="/signin" className='nav-link'> Sign In</Link>
+            <Link to="/signin" className='nav-link'> Sign In/Sign Up</Link>
             
             </>
             ):(
@@ -56,7 +56,7 @@ const handleOnSignOut = () => {
               <Link to="/contact" className='nav-link'> Contact Us </Link>
               
               {role === "admin" && (
-            <Link to="/dashboard" className='nav-link'> Dashboard <AiFillDashboard className='fs-3' /></Link>
+            <Link to="/dashboard" className='nav-link'> Dashboard </Link>
           )}
 
 {role === "user" && (

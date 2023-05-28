@@ -8,6 +8,7 @@ import programs from '../../assets/programs.jpg'
 import staff from '../../assets/staff.jpg'
 import join from '../../assets/join.jpg'
 import contact from '../../assets/contact.jpg'
+import about from '../../assets/about.jpg'
 import { Link } from 'react-router-dom';
 
 export const About = () => {
@@ -17,7 +18,13 @@ export const About = () => {
 
     <Container className='mt-5 mb-5 p-4'>
 
-        <h2 className='text-center'>About Us </h2>
+        <div>
+
+        <img className="d-block w-100 aboutimg " src={about} alt="contact" />
+
+        </div>
+
+        <h2 className='text-center mt-4'>About Us </h2>
 
         <p className='fs-4 text-center'>Welcome to Libra Ease, your go-to destination for knowledge, inspiration, and community. At Libra Ease, we believe in the power of books and the transformative effect they can have on individuals and societies. Our library is more than just a collection of books; it is a sanctuary for learning, exploration, and personal growth.</p>
 

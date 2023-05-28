@@ -5,7 +5,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfileAction } from './userAction'
-import { BsWindowSidebar } from 'react-icons/bs'
+import { FaUserEdit } from 'react-icons/fa'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { auth } from '../../config/firebase-config'
@@ -115,17 +115,19 @@ const dispatch = useDispatch()
   <PrivateRoute>
     <Header/>
       
-        <Container > 
+        <Container className='mt-4 mb-4' > 
 
-        <Row>
-        <Col sm={5}>helllo</Col>
-        <Col sm={7}><div className='d-flex justify-content-center mb-5'>
+        
+        <div className='d-flex justify-content-center mb-5'>
 
-<Form className='mt-3 w-50 bg-secondary p-5 rounded-5 text-dark bg-opacity-50' onSubmit={handleOnSubmit}>
+<Form className='mt-3 w-100 border  border-dark p-5 rounded-5 text-dark bg-opacity-50' onSubmit={handleOnSubmit}>
 
   <h2 className='text-center'>Profile</h2>
 
-{inputs.map((item, i) => (
+  <Row className='mt-5'>
+    <Col>
+    <div className='d-flex justify-content-center align-items-center h-75'><FaUserEdit className='profile_icons'/></div></Col>
+    <Col>{inputs.map((item, i) => (
       <CustomInput key={i} {...item} onChange={handleOnChange} />
     ))}
 
@@ -147,11 +149,13 @@ const dispatch = useDispatch()
       <Button variant="danger" onClick={handleOnPasswordReset} >
        Request Password Reset
       </Button>
-</div>
+</div></Col>
+  </Row>
+
+
 
 </Form>
-</div></Col>
-      </Row>
+</div>
           
 
          

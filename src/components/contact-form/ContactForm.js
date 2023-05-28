@@ -65,13 +65,18 @@ const ContactForm = () => {
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="I am not a Robot."  />
+      <Form.Group className="mb-3" controlId="formGridAddress1">
+        <Form.Label>Message</Form.Label>
+        <Form.Control placeholder="Your message" name='message' onChange={handleOnChange} required={true} as="textarea"/>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+     
+<div className='d-grid'>
+<Button variant="primary" type="submit">
         Submit
       </Button>
+</div>
+     
     </Form>
       
     </div>

@@ -27,7 +27,7 @@ export const UserLayout = ({children}) => {
 
         <li><Link className='nav-link' to="/dashboard">Dashboard</Link></li>
     
-    <li><Link className='nav-link' to="/profile">Profile</Link></li>
+    
 
     {user.role === "user" && (
             // for user only 
