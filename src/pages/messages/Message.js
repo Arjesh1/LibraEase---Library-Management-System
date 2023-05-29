@@ -4,6 +4,7 @@ import UserLayout from '../../components/layout/UserLayout'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { ClientTable } from '../../components/client-table/ClientTable'
+import { MessageTable } from '../../components/message-table/MessageTable'
 
 const Messages = () => {
 
@@ -38,6 +39,8 @@ const Messages = () => {
           <h3 className='text-center'>Messages</h3>
 
           <hr/>
+
+          <MessageTable/>
 
           
 

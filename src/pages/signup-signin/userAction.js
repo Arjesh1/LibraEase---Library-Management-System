@@ -2,7 +2,7 @@ import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } fr
 import { toast } from "react-toastify";
 import { auth, db } from "../../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "./userSlice";
+import { setMessages, setUser } from "./userSlice";
 import { setClient } from "./userSlice";
 import { setModalShow } from "../../system/systemSlice";
 
@@ -147,6 +147,31 @@ export const addMessageAction = (form) => async(dispatch) => {
       toast.error("Unable to send message at this time. Try back again later")
 
     
+      
+  } catch (error) {
+      console.log(error);
+      
+  }
+}
+
+// get message to dashboard
+export const getAllMessageAction = () => async(dispatch) =>{
+  try {
+      //define search query
+      const q = query(collection(db, "messages"))
+
+      //run query to get data
+      let messages = []
+      const querySnapShot= await getDocs(q)
+
+      //add book id to the data
+      querySnapShot.forEach((doc) =>{
+        messages.push({
+              ...doc.data(),
+              id:doc.id
+          })
+      })
+      dispatch (setMessages(messages))
       
   } catch (error) {
       console.log(error);
