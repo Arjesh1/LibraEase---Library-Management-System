@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { auth, db } from "../../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -131,4 +131,25 @@ export const deleteUserAction = (id) => async(dispatch) => {
       
   }
 
+}
+
+//send message
+export const addMessageAction = (form) => async(dispatch) => {
+  try {
+      const docRef = await addDoc(collection(db, "messages"), form)
+      
+      if(docRef?.id){
+          toast.success("Your message has been sent.")
+          // dispatch(getAllMessageAction());
+        
+          return;
+      }
+      toast.error("Unable to send message at this time. Try back again later")
+
+    
+      
+  } catch (error) {
+      console.log(error);
+      
+  }
 }

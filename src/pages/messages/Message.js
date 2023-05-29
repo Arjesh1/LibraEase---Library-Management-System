@@ -5,12 +5,12 @@ import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { ClientTable } from '../../components/client-table/ClientTable'
 
-const Clients = () => {
+const Messages = () => {
 
   const {user} = useSelector(state => state.user)
 
-
-  if(user.role !== "admin"){
+  
+  if(user.role != "admin"){
     return(
       <PrivateRoute>
       <UserLayout>
@@ -35,11 +35,11 @@ const Clients = () => {
   <PrivateRoute>
       <UserLayout>
         <Container>
-          <h3 className='text-center'>Clients</h3>
+          <h3 className='text-center'>Messages</h3>
 
           <hr/>
 
-          <ClientTable/>
+          
 
 
 
@@ -50,4 +50,4 @@ const Clients = () => {
   )
 }
 
-export default Clients
+export default Messages

@@ -23,6 +23,7 @@ import PasswordReset from './pages/signup-signin/PasswordReset';
 import { Contact } from './pages/contact/Contact';
 import { About } from './pages/about/About';
 import AllBooks from './pages/books/AllBooks';
+import Messages from './pages/messages/Message';
 
 function App() {
   const dispatch = useDispatch()
@@ -65,6 +66,7 @@ onAuthStateChanged(auth, (userData) =>{
     <Route path="books" element ={<Books/>}/>
     <Route path="profile" element ={<Profile/>}/>
     <Route path="book_history" element ={<BurrowHistory/>}/>
+    <Route path="message" element ={<Messages/>}/>
     <Route path="clients" element ={<Clients/>}/>
     <Route path="password_reset" element ={<PasswordReset/>}/>
 

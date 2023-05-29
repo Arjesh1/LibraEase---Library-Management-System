@@ -3,22 +3,24 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { useDispatch } from 'react-redux';
+import { addMessageAction } from '../../pages/signup-signin/userAction';
 
 const ContactForm = () => {
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({})
 
   const handleOnChange = (e) =>{
-
     const { name, value } = e.target;
-
     setForm({ ...form, [name]: value });
 
   }
 
   const handleOnSubmit = (e) =>{
     e.preventDefault()
-    console.log(form);
+    dispatch(addMessageAction(form))
+      setForm({})
     
   }
 
