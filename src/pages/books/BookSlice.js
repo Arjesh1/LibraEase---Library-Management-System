@@ -5,7 +5,8 @@ const initialState = {
    book: [],
    burrowHistory: [],
    allBurrowRecord: [],
-   reviews: [],
+   selectedBookReviews: [],
+   reviews:[],
 }
 
 const bookSlice = createSlice({
@@ -24,7 +25,7 @@ const bookSlice = createSlice({
             state.burrowHistory = payload;
           },
 
-          setReviews: (state, { payload }) => {
+          setSelectedBookReviews: (state, { payload }) => {
             if (!state.reviews.length && !payload.length) return;
       
             state.reviews = payload;
@@ -35,9 +36,15 @@ const bookSlice = createSlice({
       
             state.allBurrowRecord = payload;
           },
+
+          setReviews: (state, { payload }) => {
+            if (!state.reviews.length && !payload.length) return;
+      
+            state.reviews = payload;
+          },
     }
 })
 
-export const {setBook, setBurrowHistory, setReviews, setAllBurrowRecord} = bookSlice.actions
+export const {setBook, setBurrowHistory, setSelectedBookReviews, setAllBurrowRecord, setReviews} = bookSlice.actions
 
 export default bookSlice.reducer

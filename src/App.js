@@ -24,15 +24,16 @@ import { Contact } from './pages/contact/Contact';
 import { About } from './pages/about/About';
 import AllBooks from './pages/books/AllBooks';
 import Messages from './pages/messages/Message';
+import { getAllReviewAction } from './pages/books/BookAction';
 
 function App() {
   const dispatch = useDispatch()
   // const navigate = useNavigate();
   //  const { user } = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   user?.uid && navigate("/dashboard");
-  // }, []);
+  useEffect(() => {
+    dispatch(getAllReviewAction())
+  }, [dispatch]);
 
 
 //let firebase to reauth user if they reload the page

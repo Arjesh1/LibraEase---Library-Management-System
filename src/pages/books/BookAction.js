@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "../../config/firebase-config"
 import { toast } from "react-toastify"
-import { setAllBurrowRecord, setBook, setReviews } from "./BookSlice"
+import { setAllBurrowRecord, setBook, setReviews, setSelectedBookReviews } from "./BookSlice"
 import { setModalShow } from "../../system/systemSlice"
 import { setBurrowHistory } from "./BookSlice"
 
@@ -111,6 +111,7 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
                 isAvailable: false,
                 availableFrom: obj.returnAt,
                 id: obj.bookId,
+                averageRate: obj.averageRate,
             }
 
 
@@ -281,6 +282,36 @@ export const addNewReviewAction = (reviewObj) => async(dispatch) => {
         
     }
 }
+//import all review record 
+export const getAllReviewAction = () => async(dispatch) =>{
+    try {
+        const q = query(collection(db, "reviews"))
+        const docSnapShot = await getDocs(q)
+
+        let reviews = []                     
+
+
+
+        docSnapShot.forEach((doc) =>{
+            const id = doc.id
+            const {userId, ...rest} = doc.data()
+
+            reviews.push({
+                ...rest,
+                id
+            })
+        })
+
+        dispatch(setReviews(reviews)) 
+
+       
+        
+    } catch (error) {
+        
+        toast.error(error.message)
+        
+    }
+}
 
 //get reviews for selected books
 export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
@@ -300,7 +331,7 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
 
        
   
-        dispatch(setReviews(reviews));
+        dispatch(setSelectedBookReviews(reviews));
       }
     } catch (error) {
       //log the error

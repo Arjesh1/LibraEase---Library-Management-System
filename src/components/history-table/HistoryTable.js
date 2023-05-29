@@ -36,6 +36,12 @@ if (window.confirm("Are you sure you want to return the book."))
     
   }
 
+  const handleOnDelete = () =>{
+    if (window.confirm ("Are you sure you want to delete this review? ")) {
+      // dispatch(deleteBookAction(form.id))
+      }
+  }
+
   
    
   return (
@@ -74,7 +80,7 @@ if (window.confirm("Are you sure you want to return the book."))
                     <>
                       <Rating rate={item.ratings} />
                       <br />
-                      <Button variant="outline-danger">Delete review</Button>
+                      <Button variant="outline-danger" onClick={handleOnDelete}>Delete review</Button>
                     </>
                   ) : (
                     <Button

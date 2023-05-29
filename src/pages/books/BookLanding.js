@@ -7,7 +7,7 @@ import Rating from '../../components/rating/Rating'
 import Review from '../../components/review/Review'
 import { createNewBurrowAction, getSelectedBookReviewsAction } from './BookAction'
 import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
-import { setReviews } from './BookSlice'
+import {  setSelectedBookReviews } from './BookSlice'
 
 
 
@@ -27,7 +27,7 @@ const BookLanding = () => {
         dispatch(getSelectedBookReviewsAction(bookId));
     
         return () => {
-          dispatch(setReviews([]));
+          dispatch(setSelectedBookReviews([]));
         };
       }, [bookId, dispatch, navigate, book.length]);
     
@@ -55,7 +55,8 @@ const BookLanding = () => {
                 userId: uid,
                 burrowingAt: Date.now(),
                 returnAt: Date.now() + ( defaultBurrowDay *24*60*60*1000) ,
-                hasReturned: false 
+                hasReturned: false, 
+                
 
                 
 
@@ -69,6 +70,8 @@ const BookLanding = () => {
 
     const rate = reviews?.length? 
     reviews.reduce((acc, {ratings}) => acc + +ratings, 0) / reviews.length:5
+
+   
     
     
   return (

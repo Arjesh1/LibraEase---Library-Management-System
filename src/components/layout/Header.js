@@ -59,7 +59,7 @@ const handleOnSignOut = () => {
             <Link to="/dashboard" className='nav-link'> Dashboard </Link>
           )}
 
-{role === "user" && (
+{/* {role === "user" && ( */}
                <Dropdown>
                <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
                {fName}
@@ -79,9 +79,9 @@ const handleOnSignOut = () => {
                </Dropdown.Menu>
              </Dropdown>
             
-        )}
+        {/* )} */}
 
-{role === "admin" && (
+{/* {role === "admin" && (
                <Dropdown>
                <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
                {fName}
@@ -101,7 +101,7 @@ const handleOnSignOut = () => {
                </Dropdown.Menu>
              </Dropdown>
             
-        )}
+        )} */}
 
        
 
