@@ -2,7 +2,8 @@ import React from 'react'
 import UserLayout from '../../components/layout/UserLayout'
 import { Container } from 'react-bootstrap'
 import { PrivateRoute } from '../../components/private-route/PrivateRoute'
-import { BurrowHistoryTable } from '../../components/burrowhistory-table copy/BurrowHistoryTable'
+import { BurrowHistoryTable } from '../../components/burrowhistory-table/BurrowHistoryTable'
+// import { BurrowHistoryTable } from '../../components/burrow-history/BurrowHistory'
 
 
 const BurrowHistory = () => {

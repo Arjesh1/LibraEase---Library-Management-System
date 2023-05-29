@@ -3,16 +3,22 @@ import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import { ClientTable } from '../../components/client-table/ClientTable'
 
 const Clients = () => {
 
   const {user} = useSelector(state => state.user)
+
+  
   if(user.role != "admin"){
     return(
       <PrivateRoute>
       <UserLayout>
         <Container >
           <h1 className='text-center'>Unauthorized Access</h1>
+
+         
+
 
 
 
@@ -32,6 +38,8 @@ const Clients = () => {
           <h3 className='text-center'>Clients</h3>
 
           <hr/>
+
+          <ClientTable/>
 
 
 

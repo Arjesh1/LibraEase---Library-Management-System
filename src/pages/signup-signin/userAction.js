@@ -1,8 +1,10 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { auth, db } from "../../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "./userSlice";
+import { setClient } from "./userSlice";
+import { setModalShow } from "../../system/systemSlice";
 
 export const getUserAction = (uid) => async (dispatch) => {
   try {
@@ -57,4 +59,76 @@ export const updateProfileAction = ({id, ...rest}) => async(dispatch) =>{
     console.log(error.message);
     
   }
+}
+
+//get client details
+
+export const getAllClientAction = () => async(dispatch) =>{
+  try {
+      //define search query
+      const q = query(collection(db, "user"))
+
+      //run query to get data
+      let clients = []
+      const querySnapShot= await getDocs(q)
+
+      //add book id to the data
+      querySnapShot.forEach((doc) =>{
+        clients.push({
+              ...doc.data(),
+              id:doc.id
+    
+          })
+      })
+
+      dispatch (setClient(clients))
+      
+  } catch (error) {
+      console.log(error);
+      
+  }
+}
+
+
+//update client action
+export const updateClientAction = ({id, ...rest}) => async(dispatch) => {
+  try {
+      const docRef = await setDoc(doc(db, "user", id), rest, {merge: true})
+      
+      
+          toast.success("User details has been updated")
+          dispatch(getAllClientAction());
+          dispatch(setModalShow(false))
+          return;
+      
+      
+
+    
+      
+  } catch (error) {
+      toast.error("Unable to update user details at this time. Try back again later")
+      
+  }
+}
+
+//delete user action
+
+export const deleteUserAction = (id) => async(dispatch) => {
+
+  try {
+
+       await deleteDoc(doc(db, "user", id))
+      
+      
+          toast.success("User account has been deleted")
+          dispatch(getAllClientAction());
+          dispatch(setModalShow(false))
+          return;
+      
+  } catch (error) {
+      console.log(error);
+      toast.error(error.message)
+      
+  }
+
 }

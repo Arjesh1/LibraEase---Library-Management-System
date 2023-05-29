@@ -46,7 +46,7 @@ body{
 }
 
 .right{
-    background: rgb(103, 174, 222);
+    background: rgb(251, 251, 251);
     width: calc(100% - 200px);
     margin-left: auto;
 }
