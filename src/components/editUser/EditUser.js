@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { CustomInput } from '../customInput/CustomInput'
 import { useDispatch } from 'react-redux'
 import { deleteUserAction, updateClientAction } from '../../pages/signup-signin/userAction'
+import { deleteUser, getAuth } from 'firebase/auth'
 
 
 export const EditUser = ({selectedUser}) => {
@@ -30,9 +31,12 @@ export const EditUser = ({selectedUser}) => {
       
     }
 
+        
+
     const handleOnDelete = () =>{
       if (window.confirm ("Are you sure you want to delete this user? ")) {
         dispatch(deleteUserAction(form.id))
+
         }
       
 

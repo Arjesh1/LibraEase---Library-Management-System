@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {MainLayout} from '../../components/layout/MainLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
@@ -6,11 +6,14 @@ import { toast } from 'react-toastify'
 import {auth, db} from "../../config/firebase-config"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 
 
 const SignUp = () => {
+  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
 
   const handleOnChange = (e) => {
@@ -18,6 +21,10 @@ const SignUp = () => {
 
     setForm({ ...form, [name]: value });
   };
+
+  useEffect(() => {
+    user?.uid && navigate("/");
+  }, [user.uid]);
 
   const handleOnSubmit = async (e) => {
     try {
@@ -41,8 +48,9 @@ const SignUp = () => {
       if (user?.uid) {
         await setDoc(doc(db, "user", user.uid), rest);
         return toast.success(
-          "Your account has been creted successfull, Please login in now!"
+          "Your account has been creted successfull."
         );
+        
       }
       toast.error("Error, lease try again later");
     } catch (error) {
