@@ -11,12 +11,12 @@ const BurrowHistory = () => {
 
   <PrivateRoute>
       <UserLayout>
-        <Container>
+        <Container className='pb-5' >
           <h3 className='text-center'>Book Burrow History</h3>
 
           <hr/>
 
-          <BurrowHistoryTable/>
+          <BurrowHistoryTable className='mb-5'/>
 
 
 

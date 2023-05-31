@@ -57,17 +57,13 @@ export const addNewBookAction = (bookObj) => async(dispatch) => {
 //update book action
 export const updateBookAction = ({id, ...rest}) => async(dispatch) => {
     try {
-        const docRef = await setDoc(doc(db, "books", id), rest, {merge: true})
+        await setDoc(doc(db, "books", id), rest, {merge: true})
         
         
             toast.success("Book has been updated")
             dispatch(getAllBookAction());
             dispatch(setModalShow(false))
             return;
-        
-        
-
-      
         
     } catch (error) {
         toast.error("Unable to update book at this time. Try back again later")
@@ -111,17 +107,13 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
                 isAvailable: false,
                 availableFrom: obj.returnAt,
                 id: obj.bookId,
-                averageRate: obj.averageRate,
+                
             }
-
-
-
-
 
             dispatch(updateBookAction(updateObj));
             return;
         }
-        toast.error("Unable to burrow book at this time. Try back again later")
+        
 
         
     } catch (error) {
@@ -156,7 +148,9 @@ export const updateBurrowBookAction = ({id, userId, ...obj}) => async(dispatch) 
 //import burrow record for logged user
 export const getBurrowBookAction = (userId) => async(dispatch) =>{
     try {
-        const q = query(collection(db, "burrow_history"), where ("userId" , "==", userId))
+        const q = query(collection(db, "burrow_history"), where ("userId" , "==", userId), 
+        
+        )
         const docSnapShot = await getDocs(q)
 
         let burrow = []                     
@@ -259,7 +253,7 @@ export const addNewReviewAction = (reviewObj) => async(dispatch) => {
         const docRef = await addDoc(collection(db, "reviews"), reviewObj)
         
         if(docRef?.id){
-            toast.success("review has been added")
+            toast.success("Review has been added")
             // dispatch(getAllreviewAction());
 
             const obj = {
@@ -341,3 +335,44 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
       );
     }
   };
+
+
+  //delete review
+  export const deleteReviewAction = ({reviewId, id, userId}) => async(dispatch) => {
+
+    try {
+
+         await deleteDoc(doc(db, "reviews", reviewId))
+
+
+        
+// make reviewId and ratings from burrow-history null
+         const obj = {
+            ratings: null,
+            reviewId: null, 
+            
+        }
+
+        await setDoc(doc(db, "burrow_history", id ), obj, {
+            merge: true
+
+        })
+        
+
+       
+        
+            toast.success("Review has been deleted")
+            dispatch(getAllReviewAction());
+            dispatch(getBurrowBookAction(userId))
+            
+            return;
+        
+    } catch (error) {
+        console.log(error);
+        toast.error(error.message)
+        
+    }
+
+}
+
+

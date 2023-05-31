@@ -9,13 +9,13 @@ import { deleteUserAction, updateClientAction } from '../../pages/signup-signin/
 import { deleteUser, getAuth } from 'firebase/auth'
 
 
-export const EditUser = ({selectedUser}) => {
+export const EditReview = ({selectedBookReview}) => {
   const dispatch = useDispatch()
   const [form, setForm] = useState({});
 
   useEffect(() =>{
-    setForm(selectedUser)
-  },[selectedUser])
+    setForm(selectedBookReview)
+  },[selectedBookReview])
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -32,46 +32,35 @@ export const EditUser = ({selectedUser}) => {
       
     }
 
-        
-
-    const handleOnDelete = () =>{
-      if (window.confirm ("Are you sure you want to delete this user? ")) {
-        dispatch(deleteUserAction(form.id))   
-        
-
-        }
-      
-
-    }
-
-  const inputs = [
-
-    {
-      label: "First name",
-      name: "fName",
-      type: "text",
-      required: true,
-      value: form?.fName,
-    },
-
-    {
-      label: "Last Name",
-      name: "lName",
-      type: "text",
-      required: true,
-      value: form?.lName,
-    },
-    
-    {
-      label: "Email",
-      name: "email",
-      type: "email",
-      required: true,
-      value: form?.email,
-      disabled:true,
-    },
-    
-  ];
+    const inputs =[
+      {
+          name: 'title',
+          label: 'Review title',
+          type: 'text',
+          required: true,
+          placeholder: "Very informative book. ",
+          value: form?.title,
+      },
+      {
+          name: 'ratings',
+          label: 'Review ratings',
+          type: 'number',
+          min: 1,
+          max: 5,
+          required: true,
+          placeholder: "5",
+          value: form?.ratings
+      },
+      {
+          name: 'feedback',
+          label: 'Enter your review',
+          type: 'text',
+          as: "textarea",
+          required: true,
+          placeholder: "Write Details ",
+          value: form?.feedback,
+      },
+  ]
   return (
 
   
@@ -88,16 +77,6 @@ export const EditUser = ({selectedUser}) => {
           
           <div className="mt-5">
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Account Type</Form.Label>
-              <Form.Select name="role" onChange={handleOnChange} value={form?.role}>
-                <option value="">-- Select user --</option>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-              </Form.Select>
-            </Form.Group>
-
-
             {inputs.map((item, i) => (
               <CustomInput key={i} {...item} onChange={handleOnChange} />
             ))}
@@ -106,18 +85,13 @@ export const EditUser = ({selectedUser}) => {
 
             <div className="d-grid">
               <Button variant="primary" type="submit">
-                Update User
+                Update Review
               </Button>
 
               
             </div>
           </div>
         </Form>
-        <div className='d-grid   '  >
-        <Button variant="danger" className='m-auto' type="submit" style={{ width: "475px" }} onClick={handleOnDelete}>
-                Delete User
-              </Button>
-              </div>
 
 
         </Container>

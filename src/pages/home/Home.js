@@ -41,7 +41,7 @@ const Home = () => {
         <Row>
           <Col>
             <h1>Explore the library</h1>
-            <div className="d-flex justify-content-between mt-5">
+            <div className=" mt-5">
           
               <CustomInput
                 placeholder="Search book by title"
@@ -50,7 +50,7 @@ const Home = () => {
               />
             </div>
             <hr />
-            <div className=" d-flex justify-content-between flex-wrap gap-2">
+            <div className=" d-flex justify-content-center flex-wrap gap-5">
             {display.map((item, index) => {
   if (index < 8) {
     return (

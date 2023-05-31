@@ -79,29 +79,9 @@ const handleOnSignOut = () => {
                </Dropdown.Menu>
              </Dropdown>
             
-        {/* )} */}
+        
 
-{/* {role === "admin" && (
-               <Dropdown>
-               <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
-               {fName}
-               </Dropdown.Toggle>
-              
-         
-               <Dropdown.Menu>
-         
-               
-         
-               
-               <Dropdown.Item ><Link to="/profile" className='nav-link' >Profile </Link></Dropdown.Item>
-                 <Dropdown.Item><Link to="#" className='nav-link' onClick={handleOnSignOut}> Sign Out </Link></Dropdown.Item>
-         
-         
-                 
-               </Dropdown.Menu>
-             </Dropdown>
-            
-        )} */}
+
 
        
 

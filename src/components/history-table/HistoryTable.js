@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import "./historytable.css"
 import { useEffect, useState } from 'react';
-import { getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
+import { deleteReviewAction, getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
 import { Button, Image } from 'react-bootstrap';
 import ReviewForm from '../review/ReviewForm';
 import { setModalShow } from '../../system/systemSlice';
@@ -15,6 +15,8 @@ export const HistoryTable = ()=> {
   const {user} = useSelector(state => state.user)
   const {burrowHistory} = useSelector(state => state.books)
   const [bookForReview, setBookForReview ]= useState({})
+  const [selectedBookReview, setSelectedBookReview ]= useState({})
+
   
 
   useEffect (()=>{
@@ -29,16 +31,23 @@ if (window.confirm("Are you sure you want to return the book."))
 
   }
 
-  const handleOnReview = item =>{
+  const handleOnReview = (item )=>{
     setBookForReview(item)
     dispatch(setModalShow(true))
 
     
   }
 
-  const handleOnDelete = () =>{
+  const handleOnEditReview = item =>{
+    setSelectedBookReview(item)
+    dispatch(setModalShow(true))
+  }
+
+  
+  const handleOnDelete = (obj) =>{
+    const {reviewId, id, userId, ...rest} = obj
     if (window.confirm ("Are you sure you want to delete this review? ")) {
-      // dispatch(deleteBookAction(form.id))
+      dispatch(deleteReviewAction({reviewId, id, userId}))
       }
   }
 
@@ -48,6 +57,10 @@ if (window.confirm("Are you sure you want to return the book."))
     <>
     <CustomModal heading={"Give Review"}>
    <ReviewForm bookForReview  ={bookForReview}/>
+   </CustomModal>
+
+   <CustomModal heading={"Edit Review"}>
+   {/* <ReviewForm selectedBookReview  ={selectedBookReview}/> */}
    </CustomModal>
     
     <Table striped bordered hover className='mb-5 pb-5'>
@@ -78,9 +91,9 @@ if (window.confirm("Are you sure you want to return the book."))
           {item.hasReturned ? (
                   item.reviewId ? (
                     <>
-                      <Rating rate={item.ratings} />
+                      <Rating rate={item.ratings} onClick={() => handleOnEditReview(item)}/>
                       <br />
-                      <Button variant="outline-danger" onClick={handleOnDelete}>Delete review</Button>
+                      <Button variant="outline-danger" onClick={() => handleOnDelete(item)}>Delete review</Button>
                     </>
                   ) : (
                     <Button

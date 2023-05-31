@@ -14,11 +14,11 @@ export const Contact = () => {
 
         <h2 className='text-center'>Contact Us</h2>
 
-        <Row className='mt-4'>
-            <Col>
+        <Row className='mt-4 mb-5'>
+            <Col md={6}>
             <img className="d-block w-100" src={contact} alt="contact" />
             </Col>
-            <Col className='mt-5'><ContactForm/></Col>
+            <Col md={6} className='mt-5'><ContactForm/></Col>
         </Row>
 
 

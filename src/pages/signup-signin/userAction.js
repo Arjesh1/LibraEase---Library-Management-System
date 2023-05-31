@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { auth, db } from "../../config/firebase-config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, deleteUser, signInWithEmailAndPassword } from "firebase/auth";
 import { setMessages, setUser } from "./userSlice";
 import { setClient } from "./userSlice";
 import { setModalShow } from "../../system/systemSlice";
@@ -120,9 +120,6 @@ export const deleteUserAction = (id) => async(dispatch) => {
        await deleteDoc(doc(db, "user", id))
       
       
-          toast.success("User account has been deleted")
-          dispatch(getAllClientAction());
-          dispatch(setModalShow(false))
           return;
       
   } catch (error) {

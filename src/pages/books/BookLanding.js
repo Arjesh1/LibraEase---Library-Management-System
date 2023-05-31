@@ -54,12 +54,9 @@ const BookLanding = () => {
                 userName: fName,
                 userId: uid,
                 burrowingAt: Date.now(),
-                returnAt: Date.now() + ( defaultBurrowDay *24*60*60*1000) ,
+                returnAt: Date.now() +  defaultBurrowDay *24*60*60*1000 ,
                 hasReturned: false, 
                 
-
-                
-
             }
             dispatch(createNewBurrowAction(obj))
             return;

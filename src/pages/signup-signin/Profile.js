@@ -124,10 +124,11 @@ const dispatch = useDispatch()
 
   <h2 className='text-center'>Profile</h2>
 
-  <Row className='mt-5'>
-    <Col>
-    <div className='d-flex justify-content-center align-items-center h-75'><FaUserEdit className='profile_icons'/></div></Col>
-    <Col>{inputs.map((item, i) => (
+  <Row className='mt-5 '>
+    <Col md={4}>
+    <div className='d-flex justify-content-center align-items-center '><FaUserEdit className='profile_icons'/></div></Col>
+    <Col md={8}>
+      {inputs.map((item, i) => (
       <CustomInput key={i} {...item} onChange={handleOnChange} />
     ))}
 

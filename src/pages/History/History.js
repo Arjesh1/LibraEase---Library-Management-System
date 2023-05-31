@@ -11,7 +11,7 @@ const History = () => {
 
   <PrivateRoute>
       <Header/>
-        <Container className='mt-4'>
+        <Container className='mt-4 history_page '>
           <h3 className='text-center'>History</h3>
 
           <hr/>

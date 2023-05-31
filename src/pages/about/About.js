@@ -30,10 +30,10 @@ export const About = () => {
 
         <Row className='mt-5 shadow p-3 mb-5 bg-body-tertiary rounded shadow p-3 mb-5 bg-body-tertiary rounded'>
         <h4 className='text-center mb-5'>Our Mission</h4>
-            <Col>
+            <Col md={6}  >
             <img className="d-block w-100" src={mission} alt="contact" />
-            </Col>
-            <Col className='d-flex align-items-center'>
+            </Col >
+            <Col  md={6} className='d-flex align-items-center mt-3'>
                 
             <p className='fs-5 lh-lg lh-lg'>Our mission is to foster a love for reading, promote literacy, and provide a welcoming space for people of all ages and backgrounds to engage with books and ideas. We aim to be the heart of our community, a place where people can gather, connect, and embark on intellectual journeys.</p></Col>
         </Row>
@@ -43,7 +43,7 @@ export const About = () => {
         <Col className='d-flex align-items-center'>
                 
                 <p className='fs-5 lh-lg'>Libra Ease is home to an extensive collection of books, spanning various genres, subjects, and languages. Whether you're searching for classic literature, contemporary fiction, academic resources, or children's books, our shelves are stocked with a diverse array of titles to cater to every interest and curiosity.</p></Col>
-            <Col>
+             <Col md={6} >
             <img className="d-block w-100" src={world} alt="contact" />
             </Col>
            
@@ -51,7 +51,7 @@ export const About = () => {
 
         <Row className='mt-5 shadow p-3 mb-5 bg-body-tertiary rounded'>
         <h4 className='text-center mb-5'>Engaging Programs and Events</h4>
-            <Col>
+             <Col md={6} >
             <img className="d-block w-100" src={programs} alt="contact" />
             </Col>
             <Col className='d-flex align-items-center'>
@@ -64,7 +64,7 @@ export const About = () => {
         <Col className='d-flex align-items-center'>
                 
                 <p className='fs-5 lh-lg'>Our dedicated team of librarians is passionate about books and committed to providing exceptional service to our patrons. Whether you need assistance in finding the perfect book, navigating our digital resources, or exploring new areas of interest, our staff is here to help. We pride ourselves on creating a warm and inclusive environment where everyone feels welcome.</p></Col>
-            <Col>
+             <Col md={6} >
             <img className="d-block w-100" src={staff} alt="contact" />
             </Col>
            
@@ -72,7 +72,7 @@ export const About = () => {
 
         <Row className='mt-5 shadow p-3 mb-5 bg-body-tertiary rounded'>
         <h4 className='text-center mb-5'>Join Us</h4>
-            <Col>
+             <Col md={6} >
             <img className="d-block w-100" src={join} alt="contact" />
             </Col>
             <Col className=''>
@@ -111,7 +111,7 @@ At Libra Ease, we believe in the power of reading, and we invite you to embark o
     
     </div>
     </Col>
-            <Col>
+             <Col md={6} >
             <img className="d-block w-100" src={contact} alt="contact" />
             </Col>
            

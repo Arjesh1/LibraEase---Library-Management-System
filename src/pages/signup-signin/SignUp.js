@@ -119,7 +119,7 @@ const SignUp = () => {
           <div className="mt-3">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Account Type</Form.Label>
-              <Form.Select name="role" onChange={handleOnChange}>
+              <Form.Select name="role" onChange={handleOnChange} required={true}>
                 <option value="">-- Select user --</option>
                 <option value="admin">Admin</option>
                 <option value="user">User</option>

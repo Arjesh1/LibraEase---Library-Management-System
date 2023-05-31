@@ -2,10 +2,12 @@ import React from 'react'
 import {BsStarFill, BsStarHalf, BsStar} from 'react-icons/bs'
 const maxRate = 5
 
-const Rating = ({rate= 5 }) => {
-  const hasDecimalValue = rate % 1;
+const Rating = ({rate = 5 }) => {
 
-  const fullRateStar = Math.floor(rate);
+  const rateStar = rate || 5
+  const hasDecimalValue = rateStar % 1;
+
+  const fullRateStar = Math.floor(rateStar);
   const noRate =
     hasDecimalValue > 0 ? maxRate - fullRateStar - 1 : maxRate - fullRateStar;
 
