@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import "./burrowhistorytable.css"
 import { useEffect, useState } from 'react';
-import { getAllBurrowBookAction, getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
+import { deleteReviewAction, getAllBurrowBookAction, getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
 import { Button, Image } from 'react-bootstrap';
 import ReviewForm from '../review/ReviewForm';
 import { setModalShow } from '../../system/systemSlice';
@@ -22,9 +22,12 @@ export const BurrowHistoryTable = ()=> {
   }, [dispatch])
 
 
-  const handleOnEdit = item =>{
-    setBookForReview(item)
-    dispatch(setModalShow(true))
+
+  const handleOnDelete = (obj) =>{
+    const {reviewId, id, userId, ...rest} = obj
+    if (window.confirm ("Are you sure you want to delete this review? ")) {
+      dispatch(deleteReviewAction({reviewId, id, userId}))
+      }
   }
 
    
@@ -43,6 +46,7 @@ export const BurrowHistoryTable = ()=> {
           <th>User</th>
           <th>Burrow Date</th>
           <th>Return Date</th>
+          <th>Ratings</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -60,14 +64,17 @@ export const BurrowHistoryTable = ()=> {
           <td>{item.userName}</td>
           <td>{new Date(item.burrowingAt).toDateString()}</td>
           <td>{new Date(item.returnAt).toDateString()}</td>
+          <td><Rating rate={item.ratings} /></td>
           
           <td>
-          <Button
-                      variant="warning"
-                      onClick={() => handleOnEdit(item)}
-                    >
-                      Edit
-                    </Button>
+          {item.reviewId ? (
+              <>
+                <Button variant="outline-danger" onClick={() => handleOnDelete(item)}>Delete review</Button>
+              </>
+            ) : (
+              <Button variant="outline-danger" disabled={true} onClick={() => handleOnDelete(item)}>Delete review</Button>
+            )
+}
         
           </td>
         </tr>

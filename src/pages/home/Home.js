@@ -50,7 +50,7 @@ const Home = () => {
               />
             </div>
             <hr />
-            <div className=" d-flex justify-content-center flex-wrap gap-5">
+            <div className=" d-flex justify-content-center flex-wrap gap-4">
             {display.map((item, index) => {
   if (index < 8) {
     return (

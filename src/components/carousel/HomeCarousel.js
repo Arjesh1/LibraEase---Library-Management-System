@@ -1,6 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import a from "../../assets/a.jpg";
-import b from "../../assets/a.jpg";
+import b from "../../assets/b.jpg";
 import c from "../../assets/c.jpg";
 import "./carouse.css";
 
@@ -9,27 +9,25 @@ export const HomeCarousel = () => {
     <Carousel fade>
     <Carousel.Item>
       <img className="d-block w-100" src={a} alt="First slide" />
-      <Carousel.Caption className="text-dark">
-        <h3>Welcome to digital library</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <Carousel.Caption >
+        <h3>Unlock the World of Knowledge.</h3>
+       
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img className="d-block w-100" src={b} alt="Second slide" />
 
       <Carousel.Caption>
-        <h3>One place for all the books</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>Immerse Yourself in the Power of Books.</h3>
+       
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img className="d-block w-100" src={c} alt="Third slide" />
 
       <Carousel.Caption>
-        <h3>Explore the book worlds</h3>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
+        <h3>Books Open Doors: Explore, Learn, Grow</h3>
+        
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>

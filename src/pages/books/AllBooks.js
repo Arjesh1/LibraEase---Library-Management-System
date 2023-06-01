@@ -45,7 +45,7 @@ const AllBooks = () => {
               />
             </div>
             <hr />
-            <div className=" d-flex justify-content-center flex-wrap gap-5">
+            <div className=" d-flex justify-content-center flex-wrap gap-4">
                 {!display.length && (
                 <>
                 <p  className='text-center'>No books found!</p>
