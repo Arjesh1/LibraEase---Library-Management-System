@@ -122,9 +122,7 @@ if (window.confirm("Are you sure you want to return the book."))
 
           </Card.Text>
           <div className="card-rating d-flex justify-content-center gap-1">
-
-          {burrowHistory.map((item, i) =>(
-            <>
+            
           {item.hasReturned ? (
             item.reviewId ? (
               <>
@@ -151,9 +149,9 @@ if (window.confirm("Are you sure you want to return the book."))
               Return Book
             </Button>
           )}
-          </>
+         
 
-          ))}
+        
           </div>
           
         </Card.Body>
