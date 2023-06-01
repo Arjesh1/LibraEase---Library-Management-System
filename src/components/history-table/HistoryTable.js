@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./historytable.css"
 import { useEffect, useState } from 'react';
 import { deleteReviewAction, getBurrowBookAction, returnBookAction } from '../../pages/books/BookAction';
-import { Button, Image } from 'react-bootstrap';
+import { Button, Card, Image } from 'react-bootstrap';
 import ReviewForm from '../review/ReviewForm';
 import { setModalShow } from '../../system/systemSlice';
 import { CustomModal } from '../customModal/CustomModal';
 import Rating from '../rating/Rating';
-import { HistoryCustomCard } from '../historyCustomCard/HistoryCustomCard';
+
 
 
 export const HistoryTable = ()=> {
@@ -17,8 +17,23 @@ export const HistoryTable = ()=> {
   const {burrowHistory} = useSelector(state => state.books)
   const [bookForReview, setBookForReview ]= useState({})
   const [selectedBookReview, setSelectedBookReview ]= useState({})
+  const [isMobile, setIsMobile] = useState(false)
 
-  
+  //choose the screen size 
+const handleResize = () => {
+  if (window.innerWidth < 768) {
+      setIsMobile(true)
+  } else {
+      setIsMobile(false)
+  }
+}
+
+
+
+// create an event listener
+useEffect(() => {
+  window.addEventListener("resize", handleResize)
+})
 
   useEffect (()=>{
     dispatch(getBurrowBookAction(user?.uid))
@@ -73,13 +88,83 @@ if (window.confirm("Are you sure you want to return the book."))
 
     )}
 
-    {!window.innerWidth <= 768 ? (
+    {isMobile === true ? (
       <>
-      <div className=" d-flex justify-content-center flex-wrap gap-5">
+      <div className=" d-flex justify-content-center flex-wrap gap-5 mb-5">
                
       {burrowHistory.map((item) =>(
-        <HistoryCustomCard className="mt-4" key={item.id} {...item}/>
+        <Card className="mt-5" style={{ width: "18rem", height:"46rem" }}>
+        <Card.Img className="cardImg" variant="top" src={item.url} />
+        <Card.Body>
+          <Card.Title className="fw-bold title">{item.bookName}</Card.Title>
+          <Card.Text>
+            <h5 className="author"> 
+              {item.author} - {item.year}
+            </h5>
+
+            <div className="d-flex gap-2 mt-2">
+
+              <div>
+                <p>Burrow date</p>
+                <p>{new Date(item.burrowingAt).toDateString()}</p>
+
+              
+              </div>
+
+              <div>
+                <p>Return date</p>
+                <p>{new Date(item.returnAt).toDateString()}</p>
+
+              
+              </div>
+
+            </div>
+
+          </Card.Text>
+          <div className="card-rating d-flex justify-content-center gap-1">
+
+          {burrowHistory.map((item, i) =>(
+            <>
+          {item.hasReturned ? (
+            item.reviewId ? (
+              <>
+              <Button className='mb-2' variant='body' onClick={() => handleOnEditReview(item)}>
+              <Rating rate={item.ratings} />
+              </Button>
+                
+                <br />
+                <Button variant="outline-danger" onClick={() => handleOnDelete(item)}>Delete review</Button>
+              </>
+            ) : (
+              <Button
+                variant="warning"
+                onClick={() => handleOnReview(item)}
+              >
+                Give Review
+              </Button>
+            )
+          ) : (
+            <Button
+              variant="primary"
+              onClick={() => handleOnReturn(item)}
+            >
+              Return Book
+            </Button>
+          )}
+          </>
+
+          ))}
+          </div>
+          
+        </Card.Body>
+      </Card>
+
+        
+
+        
       ))}
+
+      
       
     </div>
     </>

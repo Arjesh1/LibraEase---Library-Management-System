@@ -59,7 +59,7 @@ const ReviewForm = ({bookForReview}) => {
         
     <Form
     onSubmit={handleOnSubmit}
-    className=" m-auto bg-light p-3 mb-3"
+    className=" m-auto bg-light p-3 mb-3 modal_body"
     style={{ width: "500px" }}
   >
     <h4 className='text-center'> {bookName}</h4>

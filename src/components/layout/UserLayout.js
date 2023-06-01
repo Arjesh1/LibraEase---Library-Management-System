@@ -80,7 +80,7 @@ export const UserLayout = ({children}) => {
 
 {/* footer section */}
 
-<div className='fixed-bottom'>
+<div className='fixed-bottom mt-5'>
      <Footer/>
     </div>
         

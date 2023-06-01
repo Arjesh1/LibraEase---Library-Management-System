@@ -4,10 +4,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 
-.icons{
+.signin_icons{
     font-size: 10rem;
 }
 
@@ -27,5 +28,39 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+}
+
+.profile_icons{
+    font-size: 25rem;
+}
+
+
+
+/* mobile screen */
+/* max width */
+@media (0 <= width <=576px ){
+
+    .signin_form{
+        margin-top: 2rem !important;
+        width: 280px !important;
+        height: auto !important;
+        
+        
+    }
+
+    .signin_icons{
+        font-size: 5rem;
+    }
+
+    .signin_container{
+        margin-bottom: 5rem !important;
+    }
+
+    .profile_icons{
+        font-size: 15rem;
+    }
+
+
 
 }

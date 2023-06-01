@@ -1,0 +1,7 @@
+@media (0 <= width <=767px ){
+    .reverse_col{
+        flex-direction: column-reverse !important;
+        gap: 1rem;
+
+    }
+}

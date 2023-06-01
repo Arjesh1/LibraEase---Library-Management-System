@@ -61,19 +61,19 @@ const PasswordReset = () => {
   return (
     <MainLayout>
       <div className='forget_password'>
-      <Container >
+      <Container className=' mb-5 pb-5' >
       <Link to ="/signin">
-            <Button variant='secondary' className='mt-5'> <BsFillArrowLeftCircleFill/> Back</Button>
+            <Button variant='secondary' className='mt-4'> <BsFillArrowLeftCircleFill/> Back</Button>
 
           </Link>
         <Form
           onSubmit={handleOnSubmit}
-          className="border p-5 shadow-lg rounded m-auto bg-light  mb-3"
+          className="border p-5 shadow-lg rounded m-auto mt-4 bg-light signin_form mb-3 "
           style={{ width: "400px" }}
         >
 
           <div className=' d-flex justify-content-center'>
-            <FaUserLock className='icons'/>
+            <FaUserLock className='signin_icons'/>
           </div>
           <h3 className="text-primary fw-bolder mt-2 mb-2">
             Reset Password

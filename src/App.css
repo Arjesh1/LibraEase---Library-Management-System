@@ -61,9 +61,7 @@ body{
     font-size: 3rem;
 }
 
-.profile_icons{
-    font-size: 25rem;
-}
+
 
 .aboutimg{
     height: 60vh;
@@ -72,4 +70,9 @@ body{
 
 .history_page{
     min-height: 71.7vh;
+}
+
+.modal_body{
+    width: auto !important;
+    
 }

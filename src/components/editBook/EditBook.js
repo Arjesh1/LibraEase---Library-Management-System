@@ -92,7 +92,7 @@ export const EditBook = ({selectedBook}) => {
         
           <Form
           onSubmit={handleOnSubmit}
-          className=" m-auto bg-light p-3 mb-3"
+          className=" m-auto bg-light p-3 mb-3 modal_body"
           style={{ width: "500px" }}
         >
       

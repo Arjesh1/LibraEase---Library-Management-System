@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {MainLayout} from '../../components/layout/MainLayout'
 import { Button, Container, Form } from 'react-bootstrap'
 import { CustomInput } from '../../components/customInput/CustomInput'
-import { toast } from 'react-toastify'
-import {auth, db} from "../../config/firebase-config"
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from './userAction'
 import {  Link, useNavigate } from 'react-router-dom'
@@ -55,17 +51,17 @@ const SignIn = () => {
 
   return (
     <MainLayout>
-      <div className='signin'>
-      <Container className='mb-2'>
+      <div className='signin pb-5'>
+    <Container  className='mb-5 pt-5 pb-5 signin_container d-flex justify-content-center align-items-center'>
         <br/>
         <Form
           onSubmit={handleOnSubmit}
-          className="border p-5 shadow-lg rounded m-auto bg-light mt-2 mb-3"
+          className="border p-5 shadow-lg rounded m-auto bg-light mt-2 mb-3 signin_form d-block"
           style={{ width: "400px" }}
         >
 
           <div className=' d-flex justify-content-center'>
-            <FaUserCircle className='icons'/>
+            <FaUserCircle className='signin_icons'/>
           </div>
 
           <div className="mt-3">
@@ -102,3 +98,4 @@ const SignIn = () => {
 };
 
 export default SignIn;
+

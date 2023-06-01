@@ -11,6 +11,7 @@ import { toast } from 'react-toastify'
 import { auth } from '../../config/firebase-config'
 import Header from '../../components/layout/Header'
 import Footer from '../../components/layout/Footer'
+import "./signin_signup.css"
 
 
 

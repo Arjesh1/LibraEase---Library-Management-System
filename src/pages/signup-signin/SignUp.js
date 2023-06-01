@@ -100,14 +100,14 @@ const SignUp = () => {
 
     <MainLayout>
       <div className='signup '>
-      <Container className="mb-5 ">
+      <Container className="mb-5 pb-5">
       <Link to ="/signin">
-            <Button variant='secondary' className='mt-5'> <BsFillArrowLeftCircleFill/> Back</Button>
+            <Button variant='secondary' className='mt-3'> <BsFillArrowLeftCircleFill/> Back</Button>
 
           </Link>
         <Form
           onSubmit={handleOnSubmit}
-          className="border p-5 shadow-lg rounded m-auto bg-light   mb-3"
+          className="border p-5 shadow-lg rounded m-auto bg-light signin_form mt-2 pb-5 mb-5"
           style={{ width: "450px" }}
         >
           <h3 className="text-primary fw-bolder mb-3">Join Our Library Comunity</h3>

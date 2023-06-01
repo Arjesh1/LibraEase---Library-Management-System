@@ -22,3 +22,10 @@
     width: calc(100% - 130px);
     margin-top: 3px;
 }
+
+.modal_body{
+    width: auto !important;
+    
+}
+
+
