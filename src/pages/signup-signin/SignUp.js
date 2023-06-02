@@ -100,7 +100,7 @@ const SignUp = () => {
 
     <MainLayout>
       <div className='signup '>
-      <Container className="mb-5 pb-5">
+      <Container className=" pb-5">
       <Link to ="/signin">
             <Button variant='secondary' className='mt-3'> <BsFillArrowLeftCircleFill/> Back</Button>
 

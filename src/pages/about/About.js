@@ -1,4 +1,4 @@
-import { Button, Container } from 'react-bootstrap';
+import { Button, Carousel, Container } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import MainLayout from '../../components/layout/MainLayout';
@@ -15,17 +15,22 @@ import "./about.css"
 export const About = () => {
   return (
     <div>
+
+
        <MainLayout>
 
+       <h2 className='text-center mt-4 mb-4'>About Us </h2>
+
+       <Carousel  controls={false}>
+    <Carousel.Item>
+      <img className="d-block w-100" src={about} alt="about" />
+    </Carousel.Item>
+    </Carousel>
     <Container className='mt-5 mb-5 p-4'>
 
-        <div>
+        
 
-        <img className="d-block w-100 aboutimg " src={about} alt="contact" />
-
-        </div>
-
-        <h2 className='text-center mt-4'>About Us </h2>
+        
 
         <p className='fs-4 text-center'>Welcome to Libra Ease, your go-to destination for knowledge, inspiration, and community. At Libra Ease, we believe in the power of books and the transformative effect they can have on individuals and societies. Our library is more than just a collection of books; it is a sanctuary for learning, exploration, and personal growth.</p>
 
