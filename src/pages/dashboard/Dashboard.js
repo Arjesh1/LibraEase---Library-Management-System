@@ -8,8 +8,32 @@ import { getAllClientAction } from '../signup-signin/userAction'
 import { ImBooks } from 'react-icons/im'
 import { FaUser } from 'react-icons/fa'
 import { GiRead } from 'react-icons/gi'
+import { FcManager, FcViewDetails } from 'react-icons/fc'
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+
 
 
 
@@ -29,6 +53,32 @@ const Dashboard = () => {
     // dispatch(getAllBookAction())
 
   }, [dispatch])
+
+  const labels = ['Books', 'User',  'Burrowed Books']
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: true,
+      
+    },
+  };
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Details',
+        data: [book.length,client.length, allBurrowRecord.length],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        tension:0.4,
+        fill: true,
+        
+      },
+      
+    ],
+  };
 
   return (
 
@@ -78,7 +128,7 @@ const Dashboard = () => {
 
               </div>
               <div>
-              <p className='text-center  mt-2  fs-5 '> Burrowed Books
+              <p className='text-center  mt-2  fs-5 '> Burrowed
               <br/> 
               <span className='fw-bold fs-3'>{allBurrowRecord.length}</span>
               </p>
@@ -92,38 +142,41 @@ const Dashboard = () => {
 
           {/* charts */}
 
+          <div className='charts d-flex justify-content-center'>
+
+          <Line options={options} data={data} />
+          
+          </div>
+
           {/* table */}
 
           {/* user client */}
-          <div className='d-flex justify-content-between gap-4 '>
+          
+          <div className='d-flex gap-5 ms-5 me-5'>
             <div className='w-50'> 
-            <Table striped bordered hover >
+            <Table   borderless >
             <thead>
-              <tr>
-                <th colSpan={5}  className='text-center bg-info text-light fs-4'>Users</th>
+              <tr className='bg-info rounded-top'>
+                <th colSpan={5}  className='text-center bg-info  text-light fs-5'>Users</th>
+                <th className='text-end'><Link to="/clients">
+            <Button variant='dark' className='me-0'>More</Button>
+            </Link></th>
                 </tr>
                 </thead>  
-      <thead>
-        <tr>
-          <th>No.</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Role</th>
-          <th>Email</th>
-        </tr>
-      </thead>
+      
       <tbody>
 
       {client.map((item, index) => {
-  if (index < 4) {
+  if (index < 5) {
     return (
-      <tr key={item.id}>
-            <td>{index + 1}</td>
+      <tr key={item.id} className='shadow  rounded'>
+       
+         
             <td>
-            {item.fName}
+            <FcManager className='fs-2 me-3 text-dark'/>{item.fName + " " + item.lName} 
           </td>
-            <td>{item.lName}</td>
-            <td>{item.role}</td>
+          
+            <td >{item.role}</td>
             <td>{item.email}</td>
           </tr>
     );
@@ -136,11 +189,9 @@ const Dashboard = () => {
 
       <tbody>
         <tr>
-          <td colSpan={5} className='text-end'>
+          <td colSpan={5} >
             
-            <Link to="/clients">
-            <Button variant='dark' className='me-3'>More</Button>
-            </Link>
+            
             </td>
           
         </tr>
@@ -150,30 +201,30 @@ const Dashboard = () => {
             </div>
 
           {/* books table */}
-            <div className='w-50'> 
-            <Table striped bordered hover >
+            <div className='w-50 '> 
+            <Table borderless  >
             <thead>
-              <tr>
-                <th colSpan={5}  className='text-center bg-warning text-light fs-4'>Books</th>
+              <tr className='bg-warning' >
+                <th colSpan={5}  className='text-center  text-light  fs-5'>Books</th>
+                <th colSpan={5} className='text-end '>
+            
+          <Link to="/books">
+            <Button variant='dark' className='me-0'>More</Button>
+            </Link>
+            
+            </th>
                 </tr>
                 </thead>  
-      <thead>
-        <tr>
-          <th>No.</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Year</th>
-          
-        </tr>
-      </thead>
+      
       <tbody>
 
       {book.map((item, index) => {
-  if (index < 4) {
+  if (index < 5) {
     return (
-      <tr key={item.id}>
-            <td>{index + 1}</td>
+      <tr key={item.id} className='shadow  rounded'>
+           
             <td>
+              <FcViewDetails className='fs-2 me-3 text-warning'/>
             {item.title.slice(0,20) + "...."}
           </td>
             <td>{item.name.slice(0,20) + "...."}</td>
@@ -188,24 +239,13 @@ const Dashboard = () => {
       
       </tbody>
 
-      <tbody>
-        <tr>
-          <td colSpan={5} className='text-end '>
-            
-          <Link to="/books">
-            <Button variant='dark' className='me-3'>More</Button>
-            </Link>
-            
-            </td>
-          
-        </tr>
-        
-      </tbody>
+    
     </Table>
             </div>
 
 
           </div>
+          
 
         
 

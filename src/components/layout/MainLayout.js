@@ -7,7 +7,9 @@ export const MainLayout = ({children}) => {
     <div>
 
         {/* header section */}
-        <Header/>
+        <div className='fixed-top'>
+        <Header />
+        </div>
      
 
 

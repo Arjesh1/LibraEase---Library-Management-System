@@ -2,11 +2,15 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='text-center bg-dark text-light p-5'>
+    <>
+    
+    <div className='text-center border-top  bg-light text-dark p-5 pb-2'>
+      
         &copy; Copy right all reserved 2023 | LibraEase
         <p>Made with &hearts; by Arjesh Khadka</p>
       
     </div>
+    </>
   )
 }
 

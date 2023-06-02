@@ -36,13 +36,11 @@ body{
 .left{
     
     min-width: 200px;
-    background-image: url(./assets/dashboard.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover  ;
+    background-color: rgb(227, 222, 222);
     height: 100%;
     position: fixed;
     color: white;
+   
 }
 
 .right{
@@ -75,4 +73,9 @@ body{
 .modal_body{
     width: auto !important;
     
+}
+
+.charts{
+   height: 25rem;
+   margin-bottom: 5rem;
 }
