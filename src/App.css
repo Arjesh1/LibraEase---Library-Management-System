@@ -84,3 +84,7 @@ body{
 .mobile_restrict{
     height: 100vh;
 }
+
+.loader{
+    height: 100vh !important;
+}
