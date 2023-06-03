@@ -22,7 +22,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { ClimbingBoxLoader } from 'react-spinners'
+import { PulseLoader } from 'react-spinners'
 
 
 ChartJS.register(
@@ -103,7 +103,7 @@ useEffect(() => {
     
     {loading ?  
     <div className='d-flex justify-content-center align-items-center loader'>
-      <ClimbingBoxLoader
+      <PulseLoader
   color="rgba(0, 0, 0, 1)"
   size={30}
 />
