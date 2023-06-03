@@ -103,8 +103,12 @@ useEffect(() => {
   <PrivateRoute>
 
 {isMobile === true ? (
-  <div className='mobile_restrict d-flex justify-content-center  align-items-center p-3' >
-  <h1 className='p-4 shadow-lg' >Please use desktop to access dashboard! </h1>
+  <div className='mobile_restrict d-flex justify-content-center flex-column  align-items-center p-3' >
+  <h1 className='p-4 shadow-lg d-flex justify-content-center flex-column  align-items-center gap-4' >Please use desktop to access dashboard! 
+   <Link to="/">
+            <Button variant='dark' className='me-0'>Home</Button>
+            </Link></h1>
+ 
   </div>
 ):(    
 <>  <UserLayout>

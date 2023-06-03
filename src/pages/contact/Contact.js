@@ -12,7 +12,7 @@ export const Contact = () => {
 
     <Container className='mt-5'>
 
-        <h2 className='text-center'>Contact Us</h2>
+        <h2 className='text-center pt-4'>Contact Us</h2>
 
         <Row className='mt-4 mb-5'>
             <Col md={6}>
