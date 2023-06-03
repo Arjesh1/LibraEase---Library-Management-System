@@ -86,7 +86,7 @@ export const EditUser = ({selectedUser}) => {
       
 
           
-          <div className="mt-5">
+          <div className="mt-1">
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Account Type</Form.Label>
@@ -111,13 +111,16 @@ export const EditUser = ({selectedUser}) => {
 
               
             </div>
-          </div>
-        </Form>
-        <div className='d-grid   '  >
-        <Button variant="danger" className='m-auto' type="submit" style={{ width: "475px" }} onClick={handleOnDelete}>
+
+            <div className='d-grid'  >
+        <Button variant="danger" className='mt-3'  onClick={handleOnDelete}>
                 Delete User
               </Button>
               </div>
+          </div>
+          
+        </Form>
+        
 
 
         </Container>

@@ -64,7 +64,15 @@ export const BurrowHistoryTable = ()=> {
           <td>{item.userName}</td>
           <td>{new Date(item.burrowingAt).toDateString()}</td>
           <td>{new Date(item.returnAt).toDateString()}</td>
-          <td><Rating rate={item.ratings} /></td>
+          <td>
+            {item.ratings ? (
+            <Rating rate={item.ratings} />
+            ):(
+              <p>No Rating</p>
+
+            )}
+            
+            </td>
           
           <td>
           {item.reviewId ? (
@@ -72,7 +80,7 @@ export const BurrowHistoryTable = ()=> {
                 <Button variant="outline-danger" onClick={() => handleOnDelete(item)}>Delete review</Button>
               </>
             ) : (
-              <Button variant="outline-danger" disabled={true} onClick={() => handleOnDelete(item)}>Delete review</Button>
+              <Button variant="danger" disabled={true} onClick={() => handleOnDelete(item)}>Delete review</Button>
             )
 }
         

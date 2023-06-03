@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,11 @@ import { useSelector } from 'react-redux'
 
 export const UserLayout = ({children}) => {
   const {user} = useSelector((state) => state.user)
+
+  useEffect(() => {
+    // to scroll all the pages to the top, avoiding react fetature that keeps the page starting from where it was left
+    window.scrollTo(0, 0);
+  }, []);
 
   
  
@@ -17,7 +22,7 @@ export const UserLayout = ({children}) => {
 
       
 
-      <div className='left  text-dark p-2 pt-5'>
+      <div className='left  text-dark  pt-5'>
       <div className='title fs-2 text-center pt-3 mt-4'>{user.fName + " " + user.lName}
       <hr /></div>
       
@@ -74,7 +79,7 @@ export const UserLayout = ({children}) => {
 
 
         {/* main contetnt area */}
-       <div className='main ps-3 pt-4 mt-5 '>{children}</div>
+       <div className='main ps-5 pt-4 mt-5 '>{children}</div>
 
 
 {/* footer section */}

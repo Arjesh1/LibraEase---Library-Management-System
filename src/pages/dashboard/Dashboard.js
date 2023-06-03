@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PrivateRoute } from '../../components/private-route/PrivateRoute'
 import UserLayout from '../../components/layout/UserLayout'
 import { Button, Container } from 'react-bootstrap'
@@ -47,10 +47,28 @@ const Dashboard = () => {
   const { client } = useSelector(state => state.user)
   const { book } = useSelector(state => state.books)
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  //choose the screen size 
+const handleResize = () => {
+  if (window.innerWidth < 768) {
+      setIsMobile(true)
+  } else {
+      setIsMobile(false)
+  }
+}
+
+
+
+// create an event listener
+useEffect(() => {
+  window.addEventListener("resize", handleResize)
+})
+
   useEffect (()=>{
     dispatch(getAllBurrowBookAction())
     dispatch(getAllClientAction())
-    // dispatch(getAllBookAction())
+   
 
   }, [dispatch])
 
@@ -83,7 +101,13 @@ const Dashboard = () => {
   return (
 
   <PrivateRoute>
-      <UserLayout>
+
+{isMobile === true ? (
+  <div className='mobile_restrict d-flex justify-content-center  align-items-center p-3' >
+  <h1 className='p-4 shadow-lg' >Please use desktop to access dashboard! </h1>
+  </div>
+):(    
+<>  <UserLayout>
         <Container className='mt-3'>
 
 {/* top displays */}
@@ -253,6 +277,11 @@ const Dashboard = () => {
 
         </Container>
       </UserLayout>
+      </> 
+      )
+}
+
+
 
   </PrivateRoute>
   )

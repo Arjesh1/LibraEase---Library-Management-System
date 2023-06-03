@@ -61,7 +61,7 @@ const dispatch = useDispatch()
           <td>{item.message}</td>
           <td>
             <a href={`mailto:${selectedMessage.email}`}>
-          <Button variant='warning' onClick={() => handleOnEdit(item)}>Reply</Button>
+          <Button variant='success' onClick={() => handleOnEdit(item)}>Reply</Button>
           </a>
             
           </td>

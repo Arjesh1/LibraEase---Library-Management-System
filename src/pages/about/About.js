@@ -19,7 +19,7 @@ export const About = () => {
 
        <MainLayout>
 
-       <h2 className='text-center mt-4 mb-4'>About Us </h2>
+       <h2 className='text-center mt-5 mb-4'>About Us </h2>
 
        <Carousel  controls={false}>
     <Carousel.Item>

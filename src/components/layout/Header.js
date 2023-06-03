@@ -31,13 +31,13 @@ const handleOnSignOut = () => {
 
   return (
   <div>
-    <Navbar bg="light" variant='light' expand="md" className='border-bottom border-black' >
+    <Navbar bg="light" variant='light' expand="md" className='border-bottom border-1 border-dark' >
       <Container>
         <Navbar.Brand href="/"><Link to="/"> <img className=" w-100" src={logo} alt="Logo" /> 
         </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ms-4">
-          <Nav className="ms-auto gap-2  fs-5 fw-medium ">
+          <Nav className="ms-auto gap-2  fs-5 fw-medium z-3 fw-semibold ">
             {!uid ?
             (<>
             <Link to="/" className='nav-link'> Home</Link>
@@ -61,7 +61,7 @@ const handleOnSignOut = () => {
 
 {/* {role === "user" && ( */}
                <Dropdown>
-               <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4'>
+               <Dropdown.Toggle variant="" id="dropdown-basic" className='fs-4  mt-auto fw-semibold'>
                {fName}
                </Dropdown.Toggle>
               

@@ -98,7 +98,7 @@ export const EditBook = ({selectedBook}) => {
       
 
           
-          <div className="mt-5">
+          <div className="mt-1">
 
 
             {inputs.map((item, i) => (
@@ -112,13 +112,15 @@ export const EditBook = ({selectedBook}) => {
 
               
             </div>
-          </div>
-        </Form>
-        <div className='d-grid   '  >
-        <Button variant="danger" className='m-auto' type="submit" style={{ width: "475px" }} onClick={handleOnDelete}>
+
+            <div className='d-grid   '  >
+        <Button variant="danger" className='mt-3' type="submit"  onClick={handleOnDelete}>
                 Delete Book
               </Button>
               </div>
+          </div>
+        </Form>
+        
 
 
         </Container>

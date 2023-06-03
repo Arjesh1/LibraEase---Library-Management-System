@@ -102,18 +102,18 @@ if (window.confirm("Are you sure you want to return the book."))
               {item.author} - {item.year}
             </h5>
 
-            <div className="d-flex gap-2 mt-2">
+            <div className="d-flex justify-content-around gap-5 mt-3">
 
               <div>
-                <p>Burrow date</p>
-                <p>{new Date(item.burrowingAt).toDateString()}</p>
+                <p className='fw-bold text-center'>Burrow date</p>
+                <p className='text-center'>{new Date(item.burrowingAt).toDateString()}</p>
 
               
               </div>
 
               <div>
-                <p>Return date</p>
-                <p>{new Date(item.returnAt).toDateString()}</p>
+                <p className='fw-bold text-center'>Return date</p>
+                <p className='text-center'>{new Date(item.returnAt).toDateString()}</p>
 
               
               </div>

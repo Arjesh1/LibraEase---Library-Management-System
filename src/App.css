@@ -8,6 +8,7 @@ body{
 
 .main{
     min-height: 80vh;
+    margin-top: 4.1rem;
 }
 
 .navbar-brand{
@@ -78,4 +79,8 @@ body{
 .charts{
    height: 25rem;
    margin-bottom: 5rem;
+}
+
+.mobile_restrict{
+    height: 100vh;
 }

@@ -7,7 +7,6 @@ import { CustomInput } from '../../components/customInput/CustomInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookAction } from '../books/BookAction';
 import { CustomCard } from '../../components/customCard/CustomCard';
-import { BsFillArrowDownCircleFill } from 'react-icons/bs';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
@@ -41,7 +40,7 @@ const Home = () => {
         <Row>
           <Col>
             <h1>Explore the library</h1>
-            <div className=" mt-5">
+            <div className=" mt-2">
           
               <CustomInput
                 placeholder="Search book by title"
@@ -51,6 +50,11 @@ const Home = () => {
             </div>
             <hr />
             <div className=" d-flex justify-content-center flex-wrap gap-4">
+
+            {!display.length && (
+                <>
+                <p  className='text-center'>No books found!</p>
+                </>)}
             {display.map((item, index) => {
   if (index < 8) {
     return (
