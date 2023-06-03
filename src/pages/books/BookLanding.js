@@ -73,8 +73,8 @@ const BookLanding = () => {
     
   return (
    <MainLayout>
-    <Container className='mt-5 mb-5'>
-    <Link to ="/">
+    <Container className='mt-5 mb-5 pt-4'>
+    <Link to ="/allBooks">
             <Button variant='secondary'> <BsFillArrowLeftCircleFill/>  Back</Button>
 
           </Link>

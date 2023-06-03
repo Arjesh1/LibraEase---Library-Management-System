@@ -22,10 +22,9 @@ const dispatch = useDispatch()
 
   const handleOnEdit = (obj) =>{
     setSelectedMessage(obj)
- 
-  
 
   }
+
 
   
    
@@ -57,7 +56,7 @@ const dispatch = useDispatch()
         </td>
           <td>{item.lName}</td>
           <td>{item.email}</td>
-          <td>{item.address + " , " +  item.city + " , " + item.state + " , " + item.zip }</td>
+          <td>{item.address + " , " +  item.city + " , " + item.state + " , " + item.zip}</td>
           <td>{item.message}</td>
           <td>
             <a href={`mailto:${selectedMessage.email}`}>

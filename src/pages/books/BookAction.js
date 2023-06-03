@@ -27,7 +27,7 @@ export const getAllBookAction = () => async(dispatch) =>{
         dispatch (setBook(books))
         
     } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -49,7 +49,7 @@ export const addNewBookAction = (bookObj) => async(dispatch) => {
       
         
     } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -86,8 +86,7 @@ export const deleteBookAction = (id) => async(dispatch) => {
             return;
         
     } catch (error) {
-        console.log(error);
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 
@@ -117,8 +116,7 @@ export const createNewBurrowAction = (obj) => async(dispatch) =>{
 
         
     } catch (error) {
-        console.log(error);
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -139,8 +137,7 @@ export const updateBurrowBookAction = ({id, userId, ...obj}) => async(dispatch) 
 
         
     } catch (error) {
-        console.log(error);
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -173,7 +170,7 @@ export const getBurrowBookAction = (userId) => async(dispatch) =>{
         
     } catch (error) {
         
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -204,7 +201,7 @@ export const getAllBurrowBookAction = () => async(dispatch) =>{
         
     } catch (error) {
         
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -239,8 +236,7 @@ toast.success("Book has been returned.")
         dispatch(getBurrowBookAction(userId))
         
     } catch (error) {
-        console.log(error);
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -302,7 +298,7 @@ export const getAllReviewAction = () => async(dispatch) =>{
         
     } catch (error) {
         
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 }
@@ -368,8 +364,7 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
             return;
         
     } catch (error) {
-        console.log(error);
-        toast.error(error.message)
+        toast.error("Something went wrong. Please try again later.")
         
     }
 

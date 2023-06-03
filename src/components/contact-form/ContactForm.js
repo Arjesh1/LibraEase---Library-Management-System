@@ -63,7 +63,7 @@ const ContactForm = () => {
 
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Zip</Form.Label>
-          <Form.Control  name='zip ' onChange={handleOnChange} required={true} />
+          <Form.Control  name='zip' onChange={handleOnChange} required={true} />
         </Form.Group>
       </Row>
 

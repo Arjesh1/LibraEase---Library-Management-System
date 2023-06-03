@@ -18,7 +18,7 @@ export const getUserAction = (uid) => async (dispatch) => {
       dispatch(setUser(user));
     }
   } catch (error) {
-    toast.error(error.messge);
+    toast.error("Something went wrong. Please try again later.");
   }
 };
 //create new user
@@ -84,7 +84,7 @@ export const getAllClientAction = () => async(dispatch) =>{
       dispatch (setClient(clients))
       
   } catch (error) {
-      console.log(error);
+      console.log("Something went wrong. Please try again later.");
       
   }
 }
@@ -133,8 +133,7 @@ export const deleteUserAction = (id) => async(dispatch) => {
           return;
       
   } catch (error) {
-      console.log(error);
-      toast.error(error.message)
+      toast.error("Something went wrong. Please try again later.")
       
   }
 
@@ -181,7 +180,7 @@ export const getAllMessageAction = () => async(dispatch) =>{
       dispatch (setMessages(messages))
       
   } catch (error) {
-      console.log(error);
+      console.log("Something went wrong. Please try again later.");
       
   }
 }
