@@ -30,8 +30,8 @@ const handleOnSignOut = () => {
 }
 
   return (
-  <div>
-    <Navbar bg="light" variant='light' expand="md" className='border-bottom border-1 border-dark' >
+  <div >
+    <Navbar bg="light" variant='light' expand="md"  >
       <Container>
         <Navbar.Brand href="/"><Link to="/"> <img className=" w-100" src={logo} alt="Logo" /> 
         </Link></Navbar.Brand>
