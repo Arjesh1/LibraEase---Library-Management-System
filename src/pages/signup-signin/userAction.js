@@ -118,16 +118,9 @@ export const deleteUserAction = (id) => async(dispatch) => {
   try {
 
        await deleteDoc(doc(db, "user", id))
-  //      getAuth()
-  //      .deleteUser(id)
-  //       .then(() => {
-  //   console.log('Successfully deleted user');
-  // })
-  // .catch((error) => {
-  //   console.log('Error deleting user:', error);
-  // });
-
+       dispatch(getAllClientAction())
       dispatch(setModalShow(false))
+      
       
       
           return;

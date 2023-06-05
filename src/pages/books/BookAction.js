@@ -339,9 +339,7 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
     try {
 
          await deleteDoc(doc(db, "reviews", reviewId))
-
-
-        
+  
 // make reviewId and ratings from burrow-history null
          const obj = {
             ratings: null,
@@ -353,13 +351,11 @@ export const getSelectedBookReviewsAction = (bookId) => async (dispatch) => {
             merge: true
 
         })
-        
-
-       
-        
+                
             toast.success("Review has been deleted")
             dispatch(getAllReviewAction());
             dispatch(getBurrowBookAction(userId))
+            dispatch(getAllBurrowBookAction())
             
             return;
         
