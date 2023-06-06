@@ -13,17 +13,12 @@ const Clients = () => {
   if(user.role !== "admin"){
     return(
       <PrivateRoute>
-      <UserLayout>
+      
         <Container >
           <h1 className='text-center'>Unauthorized Access</h1>
 
-         
-
-
-
 
         </Container>
-      </UserLayout>
 
   </PrivateRoute>
     )

@@ -39,6 +39,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   const { allBurrowRecord } = useSelector(state => state.books)
   const { client } = useSelector(state => state.user)
+  const { user } = useSelector(state => state.user)
   const { book } = useSelector(state => state.books)
   const [isMobile, setIsMobile] = useState(false)
  const [loading, setLoading] = useState(true);
@@ -97,6 +98,18 @@ useEffect(() => {
       
     ],
   };
+
+  if(user.role !== "admin"){
+    return(
+      <PrivateRoute>
+        <Container >
+          <h1 className='text-center'>Unauthorized Access</h1>
+        </Container>
+  </PrivateRoute>
+    )
+
+
+  }
 
   return (
     <>
