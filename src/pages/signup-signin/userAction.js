@@ -114,10 +114,11 @@ export const updateClientAction = ({id, ...rest}) => async(dispatch) => {
 //delete user action
 
 export const deleteUserAction = (id) => async(dispatch) => {
-
+console.log(id)
   try {
 
        await deleteDoc(doc(db, "user", id))
+
        dispatch(getAllClientAction())
       dispatch(setModalShow(false))
       
@@ -126,6 +127,7 @@ export const deleteUserAction = (id) => async(dispatch) => {
           return;
       
   } catch (error) {
+    console.log(error.message)
       toast.error("Something went wrong. Please try again later.")
       
   }

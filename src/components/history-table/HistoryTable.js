@@ -88,8 +88,8 @@ if (window.confirm("Are you sure you want to return the book."))
 
     )}
 
-    {isMobile === true ? (
-      <>
+    
+      <div className='history_card'>
       <div className=" d-flex justify-content-center flex-wrap gap-5 mb-5">
                
       {burrowHistory.map((item) =>(
@@ -165,11 +165,11 @@ if (window.confirm("Are you sure you want to return the book."))
       
       
     </div>
-    </>
+    </div>
     
-    ):(
+    
 
-      <>
+      <div className='history_table'>
       <Table striped bordered hover className='mb-5 pb-5'>
 <thead className='text-center'>
   <tr>
@@ -230,9 +230,8 @@ if (window.confirm("Are you sure you want to return the book."))
  
 </tbody>
 </Table>
-</>
+</div>
 
-    )}
     
 
 

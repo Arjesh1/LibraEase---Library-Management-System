@@ -2,3 +2,19 @@
     height: 15rem !important;
     width: auto;
 }
+
+@media (768px <= width <= 1400px ){
+    .history_card{
+        display: none;
+    }
+}
+
+@media (0 <= width <=767px ){
+    .history_card{
+        display: block;
+    }
+
+    .history_table{
+        display: none;
+    }
+}
