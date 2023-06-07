@@ -17,23 +17,9 @@ export const HistoryTable = ()=> {
   const {burrowHistory} = useSelector(state => state.books)
   const [bookForReview, setBookForReview ]= useState({})
   const [selectedBookReview, setSelectedBookReview ]= useState({})
-  const [isMobile, setIsMobile] = useState(false)
-
-  //choose the screen size 
-const handleResize = () => {
-  if (window.innerWidth < 768) {
-      setIsMobile(true)
-  } else {
-      setIsMobile(false)
-  }
-}
+  
 
 
-
-// create an event listener
-useEffect(() => {
-  window.addEventListener("resize", handleResize)
-})
 
   useEffect (()=>{
     dispatch(getBurrowBookAction(user?.uid))
