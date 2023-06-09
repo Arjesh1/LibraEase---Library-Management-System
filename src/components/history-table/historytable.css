@@ -3,7 +3,11 @@
     width: auto;
 }
 
-@media (768px <= width <= 1400px ){
+@media (768px <= width <= 50000px ){
+    
+    .history_table{
+        display: block;
+    }
     .history_card{
         display: none;
     }
