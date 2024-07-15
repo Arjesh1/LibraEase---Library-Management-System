@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Libra Ease: Library Management System and Admin CMS.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Libra Ease is a comprehensive library management system and admin CMS developed to streamline library operations and enhance user experience. This project showcases my proficiency in front-end development and modern technologies.
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+I have employed a range of modern technologies to build this project:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **React & Redux:** For creating a user-friendly, smooth, and navigable website with state management.
+* **HTML and CSS:** To create well-structured and stylish web pages.
+* **Bootstrap:** For a responsive and optimal user experience.
+* **Firebase:** For real-time data synchronization and seamless updates.
+* **Figma:** For designing the website's look and feel.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Client-Side Features
+* **Browse and Search Books:** Easily browse and search for books in the library collection.
+* **Easy Borrowing Process:** Directly borrow books with a user-friendly process.
+* **Ratings and Reviews:** Provide ratings and reviews for books to help others make informed decisions.
+* **Customer Support:** Quick and efficient customer support.
+* **Messaging:** Communicate with the admin via an integrated messaging feature.
+* **User Profiles:** Edit profiles and view borrowing history.
 
-### `npm test`
+## Admin CMS Features
+* **Comprehensive Dashboard:** Efficiently manage the library system with a robust dashboard.
+* **User Management:** Access and manage user information and details.
+* **Book Management:** Add and edit books to keep the collection up-to-date.
+* **Customer Support:** Quick and efficient customer support.
+* **Borrowing History Monitoring:** Monitor borrowing history for all users.
+* **Account Management:** Manage user accounts, including deletion and profile editing.
+* **Content Moderation:** Delete ratings and reviews, and reply to user messages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Getting Started 
 
-### `npm run build`
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Node.js
+* npm
+* Firebase account
+* Stripe account
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. **Clone the Repo**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/Arjesh1/ShoeTrek.git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Install Dependencies**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm install
 
+   ```
+3. **Set up Firebase:**
+
+   * Create a Firebase project and get the configuration.
+   * Add the configuration to your project.
+
+4. **Start the Server**
+
+   ```bash
+   npm start
+   ```
+   
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
