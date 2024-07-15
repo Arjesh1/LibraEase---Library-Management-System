@@ -47,7 +47,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 1. **Clone the Repo**
 
    ```bash
-   git clone https://github.com/Arjesh1/ShoeTrek.git
+   git clone https://github.com/Arjesh1/LibraEase---Library-Management-System.git
 
    ```
 
